@@ -38,8 +38,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-#mongo_mapper
-require 'mongo'
+#mongo_mapper use beta for rails 4.0.3
 gem 'mongo_mapper', '>= 0.13.0.beta2'
 
 #less-rails
