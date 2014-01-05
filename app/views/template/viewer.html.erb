@@ -2,22 +2,22 @@
 	<div class="viewer-bar pull-right">
 		<input class="text-short" id="key_txt" />
 		<div class="btn-line">
-			<a href="#" id="start_btn" class="btn">Start</a>
-			<a href="#" id="stop_btn" class="btn">Stop</a>
+			<a href="##" id="start_btn" class="btn">Start</a>
+			<a href="##" id="stop_btn" class="btn">Stop</a>
 		</div>
 		<div class="btn-line">
-			<a href="#" id="play_btn" class="btn">Play</a>
-			<a href="#" id="pause_btn" class="btn">Pause</a>
+			<a href="##" id="play_btn" class="btn">Play</a>
+			<a href="##" id="pause_btn" class="btn">Pause</a>
 		</div>
 		<div class="btn-line">
-			<a href="#" id="push_btn" class="btn">Push</a>
+			<a href="##" id="push_btn" class="btn">Push</a>
 		</div>
 	</div>
 	<table>
 		<tbody>
 			<% 16.times do |i| %>
 				<tr>
-					<% 16.times do |i| %>
+					<% 16.times do |j| %>
 						<td id="map_<%= i %>_<%= j %>" class="team<%= (i + j) % 6 + 1 %>"></td>
 					<% end %>
 				</tr>
