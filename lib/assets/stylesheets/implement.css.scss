@@ -1,0 +1,144 @@
+//font-face
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/opensans.eot");
+	src: local('Open Sans'),local('OpenSans'),url("../fonts/opensans.eot") format('embedded-opentype'),url("../fonts/opensans.woff") format('woff'),url("../fonts/opensans.ttf") format('truetype'),url("../fonts/opensans.svg#OpenSans") format('svg');
+}
+
+//css
+body {
+	font-family: $font;
+	margin: 0;
+	padding: 0;
+	background-color: $background;
+	color: $textcolor;
+}
+
+a {
+	text-decoration: none;
+	color: $textcolor;
+	&:hover {
+		text-decoration: underline;
+		color: $textcolor;
+	}
+}
+
+.btn {
+	padding: $btn-padding;
+	background-color: $btn-background;
+	border-radius: $btn-radius;
+	margin: $btn-margin;
+	color: $btn-color;
+	&:hover {
+		color: $btn-hover;
+		text-decoration: none;
+	}
+}
+
+.btn-line {
+	margin: $btn-line-margin;
+}
+
+.pull-right {
+	top: 0;
+	float: right;
+}
+
+.container {
+	width: $window-width;
+	margin: 0px auto $window-bottom auto;
+}
+
+.hide {
+	display: none;
+}
+
+.nav-bar {
+	margin: $window-top 0px 0px 0px;
+	padding-top: $navbar-top;
+	width: 100%;
+	height: $navbar-height;
+
+	.nav-btn {
+		font-size: $navbar-size;
+		font-weight: $navbar-weight;
+		text-align: center;
+		width: auto;
+		margin: 0px $navbar-margin 0px $navbar-margin;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.nav-background {
+		z-index: -1;
+		position: absolute;
+		background-color: $navbar-background;
+		top: $window-top;
+		width: 100%;
+		height: $navbar-height;
+		opacity: $navbar-alpha;
+		-webkit-filter: $blur;
+	}
+}
+
+.login {
+	position: absolute;
+	top: $login-top;
+	width: 100%;
+	form {
+		border-radius: 0px 0px $login-radius $login-radius;
+		padding: $login-padding;
+		background-color: $login-background;
+		-webkit-filter: $blur;
+	}
+}
+
+input {
+	display: block;
+	margin: $input-margin;
+
+	&.text-short {
+		width: $input-short;
+	}
+
+	&.text-long {
+		width: $input-long;
+	}
+}
+
+.viewer {
+	width: $viewer-width;
+	margin: 0px auto;
+	table
+	{
+		border-collapse: collapse;
+		border: $viewer-border;
+		background-color: $viewer-background;
+
+		td {
+			margin: 0px;
+			padding: 0px;
+			width: $viewer-size;
+			height: $viewer-size;
+
+			&[class*=team] {
+				border-radius: $viewer-radius;
+			}
+
+			@for $i from 0 through 5 {
+				.team#{$i + 1} {
+					@include team($i);
+				}
+			}
+		}
+	}
+
+	.viewer-bar {
+		padding: $viewer-padding;
+	}
+}
