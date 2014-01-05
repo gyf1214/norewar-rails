@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+#use sass-rails for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -40,6 +43,3 @@ end
 
 #mongo_mapper use beta for rails 4.0.3
 gem 'mongo_mapper', '>= 0.13.0.beta2'
-
-#less-rails
-gem 'less-rails'
