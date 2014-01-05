@@ -3,8 +3,12 @@
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 400;
-	src: url("../fonts/opensans.eot");
-	src: local('Open Sans'),local('OpenSans'),url("../fonts/opensans.eot") format('embedded-opentype'),url("../fonts/opensans.woff") format('woff'),url("../fonts/opensans.ttf") format('truetype'),url("../fonts/opensans.svg#OpenSans") format('svg');
+	src: font-url('opensans.eot');
+	src: local('Open Sans'), local('OpenSans'),
+		 font-url('opensans.eot') format('embedded-opentype'),
+		 font-url('opensans.woff') format('woff'),
+		 font-url('opensans.ttf') format('truetype'),
+		 font-url('opensans.svg#OpenSans') format('svg');
 }
 
 //css
