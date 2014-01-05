@@ -65,6 +65,8 @@ GEM
     plucky (0.6.6)
       mongo (~> 1.5)
     polyglot (0.3.3)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -124,6 +126,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mongo_mapper (>= 0.13.0.beta2)
+  puma
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc

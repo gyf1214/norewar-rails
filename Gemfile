@@ -44,3 +44,6 @@ end
 #mongo_mapper use beta for rails 4.0.3
 gem 'mongo_mapper', '>= 0.13.0.beta2'
 gem "bson_ext"
+
+#use puma instead of WEBrick
+gem 'puma'
