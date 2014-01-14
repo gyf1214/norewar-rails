@@ -47,3 +47,6 @@ gem "bson_ext"
 
 #use puma instead of WEBrick
 gem 'puma'
+
+#use redis for communication with judge
+gem 'redis'
