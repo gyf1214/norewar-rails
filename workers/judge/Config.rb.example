@@ -1,0 +1,22 @@
+module Global
+	USER_ID		= 1000
+	GROUP_ID	= 1000
+	PID_FILE	= "/var/run/judge.pid"
+	LOG_PATH	= "/var/log/judge/"
+	LOG_FILE	= "judge.log"
+	ERR_FILE	= "error.log"
+	NULL_FILE	= "/dev/null"
+
+	BUNNY_HOST	= "127.0.0.1"
+	BUNNY_PORT	= 5672
+	BUNNY_QUEUE	= "judge.receive"
+	BUNNY_BIND	= "amq.topic"
+	BUNNY_KEY	= "judge.receive"
+	BUNNY_OUT	= "judge.publish"
+
+	REDIS_HOST	= "127.0.0.1"
+	REDIS_PORT	= 8367
+
+	OUT_PREFIX	= "judge_"
+	TIMEOUT		= 1024
+end

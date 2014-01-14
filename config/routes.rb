@@ -53,5 +53,12 @@ NorewarRails::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root "welcome#index"
+  root 'welcome#index'
+  get 'error' => 'welcome#error'
+  resources :users do
+    collection do
+      post 'logout'
+      post 'login'
+    end
+  end
 end

@@ -65,6 +65,14 @@ a {
 	width: 100%;
 	height: $navbar-height;
 
+	.nav-text {
+		font-size: $navbar-size;
+		font-weight: $navbar-weight;
+		text-align: center;
+		width: auto;
+		margin: 0px $navbar-margin 0px $navbar-margin;		
+	}
+
 	.nav-btn {
 		font-size: $navbar-size;
 		font-weight: $navbar-weight;
