@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		unless session[:user_id].nil?
 			session[:user_id] = nil
 		end
-		render nothing: true
+		redirect_to root_path
 	end
 
 	def login

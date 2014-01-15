@@ -57,9 +57,14 @@ NorewarRails::Application.routes.draw do
   get 'error' => 'welcome#error'
   resources :users do
     collection do
-      post 'logout'
+      get 'logout'
       post 'login'
     end
   end
-  resources :codes
+  resources :codes do
+    collection do
+      get 'upload'
+      post 'upload'
+    end
+  end
 end

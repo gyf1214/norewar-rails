@@ -1,6 +1,8 @@
 <h1>
 	<span><%= link_to @user.name, codes_path %></span>
 	/
+	<%= link_to 'Upload', upload_codes_path, class: 'btn pull-right' %>
+	<%= link_to 'Create', new_code_path, class: 'btn pull-right' %>
 </h1>
 <ul>
 	<% @codes.each do |code| %>
@@ -11,4 +13,3 @@
 		</li>
 	<% end %>
 </ul>
-<%= link_to "Add new", new_code_path %>

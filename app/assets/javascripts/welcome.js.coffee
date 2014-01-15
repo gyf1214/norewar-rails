@@ -35,11 +35,3 @@ ready.push ->
 			dataType: 'json'
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success
-
-	$('#logout_btn').click ->
-		$.ajax
-			url: 	'/users/logout'
-			type:	'POST'
-			dataType: 'json'
-		$('#welcome_span').hide()
-		$('#login_lst').show()

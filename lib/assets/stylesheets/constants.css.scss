@@ -24,6 +24,7 @@ $btn-background:		darken($white, 10%);
 $btn-color:				lighten($black, 10%);
 $btn-hover:				lighten($black, 40%);
 $btn-border:			lighten($black, 20%);
+$btn-title-top:			5px;
 
 //global layout
 $window-top:			20px;
@@ -90,3 +91,8 @@ $editor-bar-back:		$code-bar-back;
 $editor-bar-padding:	$code-bar-padding;
 $editor-info-margin:	$code-info-margin;
 $editor-line-height:	23px;
+$editor-area-side:		10px;
+$editor-area-margin:	10px 0px 10px $editor-area-side;
+$editor-area-width:		($code-width - $editor-area-side);
+$editor-area-height:	640px;
+$editor-color:			$textcolor;

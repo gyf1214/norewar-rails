@@ -3,6 +3,7 @@ class CodesController < ApplicationController
 
 	def new
 		@code = Code.new
+		@code.code = ''
 	end
 
 	def create

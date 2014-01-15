@@ -1,6 +1,6 @@
 <div class='nav-bar'>
 	<div class='container'>
-		<%= link_to 'Root', root_path, class: 'nav-btn pull-left' %>
+		<%= link_to 'Root', root_path, id: 'root_link', class: 'nav-btn pull-left' %>
 		<a class='nav-btn pull-left' href='##'>Competition</a>
 		<a class='nav-btn pull-left' href='##'>Result</a>
 		<%= link_to 'Codes', codes_path, class: 'nav-btn pull-left' %>
@@ -10,7 +10,7 @@
 		<span class='pull-right <%= 'hide' if session[:user_id].nil? %>' id='welcome_span'>
 			<span id='welcome_txt' class='nav-text'>Welcome,
 			<%= User.find(session[:user_id]).name unless session[:user_id].nil? %>!</span>
-			<a id='logout_btn' class='btn' href='##'>Logout</a>
+			<%= link_to 'Logout', logout_users_path, class: 'btn' %>
 		</span>
 	</div>
 

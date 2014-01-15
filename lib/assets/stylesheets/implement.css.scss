@@ -147,10 +147,10 @@ input {
 	}
 }
 
-@mixin fix-height($height) {
-	height: $height;
-	max-height: $height;
-	min-height: $height;
+@mixin fix-width($width) {
+	width: $width;
+	max-width: $width;
+	min-width: $width;
 }
 
 .viewer {
@@ -185,6 +185,9 @@ input {
 	}
 }
 
+h1 .btn {
+	margin-top: $btn-title-top;
+}
 
 .code {
 	width: $code-width;
@@ -196,11 +199,11 @@ input {
 		background: $code-bar-back;
 		padding: $code-bar-padding;
 		border-bottom: $code-border;
-	}
 
-	.code-info {
-		margin: $code-info-margin;
-		float: left;
+		.code-info {
+			margin: $code-info-margin;
+			float: left;
+		}
 	}
 
 	table {
@@ -237,6 +240,20 @@ input {
 			background: $editor-bar-back;
 			padding: $editor-bar-padding;
 			border-bottom: $editor-border;
+
+			.editor-info {
+				margin: $editor-info-margin;
+				float: left;
+			}
+		}
+
+		.editor-area {
+			@include fix-width($editor-area-width);
+			height: $editor-area-height;
+			border: none;
+			margin: $editor-area-margin;
+			background: transparent;
+			color: $editor-color;
 		}
 	}
 }
