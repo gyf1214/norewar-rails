@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
 		raise ClientException.new "Bad login" if @user.nil?
 	end
 
-	def require_params(*pars)
+	def require_params(param, allow_empty, *pars)
 		for x in pars
-			raise ClientException.new "Field #{x} required!" if params[x].nil?
-			break
+			raise ClientException.new "Field #{x} required!" if param[x].nil?
+			raise ClientException.new "Field #{x} empty" if param[x].empty? && !allow_empty
 		end
 	end
 

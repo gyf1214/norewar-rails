@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def create
-		require_params :name, :password
+		require_params params, false, :name, :password
 		unless User.find_by_name(params[:name]).nil?
 			raise ClientException.new "User with the same name exists!"
 		end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	end
 
 	def login
-		require_params :name, :password
+		require_params params, false, :name, :password
 		@user = User.find_by_name_and_password params[:name], params[:password]
 		raise ClientException.new "Login Failed!" if @user.nil?
 		session[:user_id] = @user._id
