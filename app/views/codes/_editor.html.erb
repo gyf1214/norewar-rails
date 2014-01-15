@@ -4,6 +4,19 @@
 		/
 		<%= f.text_field :name, class: 'text-long text-large editor-title-text inline', placeholder: 'Enter Name...' %>
 	</h1>
-	<%= f.text_area :code, class: 'area-large' %>
-	<%= f.submit class: 'btn' %>
+	<div class='editor-container'>
+		<div class='editor-bar'>
+			<%= f.submit 'Save', class: 'btn pull-right' %>
+		</div>
+		<table>
+			<tr>
+				<td>
+
+				</td>
+				<td>
+					<%= f.text_area :code, class: 'editor-area' %>
+				</td>
+			</tr>
+		</table>
+	</div>
 <% end %>

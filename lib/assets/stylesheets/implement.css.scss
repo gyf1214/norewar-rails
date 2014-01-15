@@ -18,6 +18,7 @@ body {
 	padding: 0;
 	background-color: $background;
 	color: $textcolor;
+	font-size: $font-size;
 }
 
 p, pre, h1, h2, h3, h4, h5 {
@@ -35,6 +36,7 @@ a {
 }
 
 .btn {
+	font-size: $font-size;
 	cursor: pointer;
 	border: none;
 	padding: $btn-padding;
@@ -145,11 +147,10 @@ input {
 	}
 }
 
-textarea {
-	&.area-large {
-		width: $area-large-width;
-		height: $area-large-height;
-	}
+@mixin fix-height($height) {
+	height: $height;
+	max-height: $height;
+	min-height: $height;
 }
 
 .viewer {
@@ -188,6 +189,7 @@ textarea {
 .code {
 	width: $code-width;
 	border: $code-border;
+	margin: $code-margin;
 
 	.code-bar {
 		height: $code-bar-height;
@@ -222,5 +224,19 @@ textarea {
 	.editor-title-text {
 		position: relative;
 		top: $editor-title-text-top;
+		margin: 0px;
+	}
+
+	.editor-container {
+		width: $editor-width;
+		border: $editor-border;
+		margin: $editor-margin;
+
+		.editor-bar {
+			height: $editor-bar-height;
+			background: $editor-bar-back;
+			padding: $editor-bar-padding;
+			border-bottom: $editor-border;
+		}
 	}
 }

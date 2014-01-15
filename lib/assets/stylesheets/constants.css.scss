@@ -5,6 +5,7 @@ $red:					#ff0000;
 
 //basic syles
 $font:					"Open Sans","Segoe UI","Tahoma","Microsoft YaHei","微软雅黑";
+$font-size: 			16px;
 $textcolor:				$white;
 $background:			$black;
 $radius-small:			5px;
@@ -49,6 +50,10 @@ $input-margin:			0px 0px 5px 0px;
 $text-height-large:		25px;
 $text-short:			100px;
 $text-long:				250px;
+
+//textarea
+$area-width:			100px;
+$area-height:			100px;
 $area-large-width:		250px;
 $area-large-height:		200px;
 
@@ -67,6 +72,7 @@ $viewer-padding:		0px 8px 0px 8px;
 //code
 $code-width:			890px;
 $code-border:			1px solid darken($white, 10%);
+$code-margin:			5px 0px 0px;
 $code-bar-height:		35px;
 $code-bar-back:			$login-background;
 $code-bar-padding:		5px 0px 5px 10px;
@@ -74,4 +80,13 @@ $code-info-margin:		5px 0px;
 $code-line-padding:		1px 12px 0px 12px;
 $code-line-cover:		5px;
 
+//editor
+$editor-width:			$code-width;
+$editor-border:			$code-border;
+$editor-margin:			$code-margin;
 $editor-title-text-top:	-7px;
+$editor-bar-height:		$code-bar-height;
+$editor-bar-back:		$code-bar-back;
+$editor-bar-padding:	$code-bar-padding;
+$editor-info-margin:	$code-info-margin;
+$editor-line-height:	23px;
