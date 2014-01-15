@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('document').ready ->
+ready.push ->
 	$('#login_lst').click ->
 		$('#login_form').slideToggle()
 
@@ -35,8 +35,6 @@ $('document').ready ->
 			dataType: 'json'
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success
-
-
 
 	$('#logout_btn').click ->
 		$.ajax

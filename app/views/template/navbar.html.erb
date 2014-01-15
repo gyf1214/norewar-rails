@@ -1,7 +1,9 @@
 <div class='nav-bar'>
 	<div class='container'>
+		<%= link_to 'Root', root_path, class: 'nav-btn pull-left' %>
 		<a class='nav-btn pull-left' href='##'>Competition</a>
 		<a class='nav-btn pull-left' href='##'>Result</a>
+		<%= link_to 'Codes', codes_path, class: 'nav-btn pull-left' %>
 		<a class='nav-btn pull-left' href='##'>Discussion</a>
 		<a class='nav-btn pull-right <%= 'hide' unless session[:user_id].nil? %>'
 			id='login_lst' href='##'>Login<small>▼</small></a>

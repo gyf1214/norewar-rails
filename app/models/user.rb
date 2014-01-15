@@ -5,5 +5,5 @@ class User
 	key :password,	String
 	many :codes
 
-	attr_accessible :name, :password
+	attr_accessible :name, :password, :codes
 end
