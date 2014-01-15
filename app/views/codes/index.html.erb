@@ -1,10 +1,13 @@
-<h1>All Codes of <%= @user.name %></h1>
+<h1>
+	<span><%= link_to @user.name, codes_path %></span>
+	/
+</h1>
 <ul>
 	<% @codes.each do |code| %>
 		<li>
-			<span><%= link_to code.name, code %></span>
-			<span><%= link_to "Edit", edit_code_path(code) %></span>
-			<span><%= link_to "Delete", code, method: :delete %></span>
+			<span><%= link_to code.name, code %></span> 
+			<!-- <span><%= link_to "Edit", edit_code_path(code) %></span>
+			<span><%= link_to "Delete", code, method: :delete %></span> -->
 		</li>
 	<% end %>
 </ul>

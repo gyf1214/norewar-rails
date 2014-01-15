@@ -1,7 +1,31 @@
-<h1><%= @code.name %></h1>
-<p>
-	<% @code.code.each_line do |line| %>
-		<%= line %>
-		<br/>
-	<% end %>
-</p>
+<h1>
+	<span><%= link_to @user.name, codes_path %></span>
+	/
+	<span><%= link_to @code.name, @code %></span>
+</h1>
+<div class='code'>
+	<div class='code-bar'>
+		<div class='code-info pull-left'>
+			<span><%= @code.code.lines.size %></span>
+			<span>line(s)</span>
+		</div>
+		<%= link_to 'Delete', @code, method: 'delete', class: 'btn btn-alert pull-right' %>
+		<%= link_to 'Edit', edit_code_path(@code), class: 'btn pull-right' %>
+	</div>
+	<table>
+		<% i = 1 %>
+		<% @code.code.each_line do |line| %>
+			<tr>
+				<td class='code-line-num'><%= i %></td>
+				<% i = i + 1 %>
+				<td class='code-line'>
+					<pre><%= line %></pre>
+				</td>
+			</tr>
+		<% end %>
+		<tr class='code-line-cover'>
+			<td class='code-line-num'></td>
+			<td></td>
+		</tr>
+	</table>
+</div>

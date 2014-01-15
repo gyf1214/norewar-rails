@@ -1,0 +1,9 @@
+<%= form_for @code, html: { class: 'editor' } do |f| %>
+	<h1>
+		<span><%= link_to @user.name, codes_path %></span>
+		/
+		<%= f.text_field :name, class: 'text-long text-large editor-title-text inline', placeholder: 'Enter Name...' %>
+	</h1>
+	<%= f.text_area :code, class: 'area-large' %>
+	<%= f.submit class: 'btn' %>
+<% end %>

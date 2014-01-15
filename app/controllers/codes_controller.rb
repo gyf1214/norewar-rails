@@ -38,6 +38,6 @@ class CodesController < ApplicationController
 		@code = @user.codes.find params[:id]
 		raise ClientException.new "Code not found!" if @code.nil?
 		@code.set params[:code]
-		redirect_to codes_path
+		redirect_to @code
 	end
 end

@@ -1,16 +1,16 @@
-<div class="viewer">
-	<div class="viewer-bar pull-right">
-		<input class="text-short" id="key_txt" />
-		<div class="btn-line">
-			<a href="##" id="start_btn" class="btn">Start</a>
-			<a href="##" id="stop_btn" class="btn">Stop</a>
+<div class='viewer'>
+	<div class='viewer-bar pull-right'>
+		<input type='text' class='text-short' id='key_txt' />
+		<div class='btn-line'>
+			<a href='##' id='start_btn' class='btn'>Start</a>
+			<a href='##' id='stop_btn' class='btn'>Stop</a>
 		</div>
-		<div class="btn-line">
-			<a href="##" id="play_btn" class="btn">Play</a>
-			<a href="##" id="pause_btn" class="btn">Pause</a>
+		<div class='btn-line'>
+			<a href='##' id='play_btn' class='btn'>Play</a>
+			<a href='##' id='pause_btn' class='btn'>Pause</a>
 		</div>
-		<div class="btn-line">
-			<a href="##" id="push_btn" class="btn">Push</a>
+		<div class='btn-line'>
+			<a href='##' id='push_btn' class='btn'>Push</a>
 		</div>
 	</div>
 	<table>
@@ -18,7 +18,7 @@
 			<% 16.times do |i| %>
 				<tr>
 					<% 16.times do |j| %>
-						<td id="map_<%= i %>_<%= j %>" class="team<%= (i + j) % 6 + 1 %>"></td>
+						<td id='map_<%= i %>_<%= j %>' class='team<%= (i + j) % 6 + 1 %>'></td>
 					<% end %>
 				</tr>
 			<% end %>

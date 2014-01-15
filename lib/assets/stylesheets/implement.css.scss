@@ -20,6 +20,11 @@ body {
 	color: $textcolor;
 }
 
+p, pre, h1, h2, h3, h4, h5 {
+	padding: 0;
+	margin: 0;
+}
+
 a {
 	text-decoration: none;
 	color: $textcolor;
@@ -30,11 +35,19 @@ a {
 }
 
 .btn {
+	cursor: pointer;
+	border: none;
 	padding: $btn-padding;
 	background-color: $btn-background;
 	border-radius: $btn-radius;
 	margin: $btn-margin;
 	color: $btn-color;
+	&.btn-border {
+		border: 1px solid $btn-border;
+	}
+	&.btn-alert {
+		color: $red;
+	}
 	&:hover {
 		color: $btn-hover;
 		text-decoration: none;
@@ -57,6 +70,10 @@ a {
 
 .hide {
 	display: none;
+}
+
+.inline {
+	display: inline;
 }
 
 .nav-bar {
@@ -113,13 +130,18 @@ a {
 input {
 	display: block;
 	margin: $input-margin;
+	&[type='text'], &[type='password'] {
+		&.text-large {
+			height: $text-height-large;
+		}
 
-	&.text-short {
-		width: $input-short;
-	}
+		&.text-short {
+			width: $text-short;
+		}
 
-	&.text-long {
-		width: $input-long;
+		&.text-long {
+			width: $text-long;
+		}
 	}
 }
 
@@ -159,5 +181,46 @@ textarea {
 
 	.viewer-bar {
 		padding: $viewer-padding;
+	}
+}
+
+
+.code {
+	width: $code-width;
+	border: $code-border;
+
+	.code-bar {
+		height: $code-bar-height;
+		background: $code-bar-back;
+		padding: $code-bar-padding;
+		border-bottom: $code-border;
+	}
+
+	.code-info {
+		margin: $code-info-margin;
+		float: left;
+	}
+
+	table {
+		border-collapse: collapse;
+		border: none;
+		tr {
+			td {
+				padding: $code-line-padding;
+				&.code-line-num {
+					border-right: $code-border;
+				}	
+			}
+			&.code-line-cover {
+				height: $code-line-cover;
+			}
+		}
+	}
+}
+
+.editor {
+	.editor-title-text {
+		position: relative;
+		top: $editor-title-text-top;
 	}
 }

@@ -1,62 +1,77 @@
 //colors
-$white:				#ffffff;
-$black:				#323232;
+$white:					#ffffff;
+$black:					#323232;
+$red:					#ff0000;
 
 //basic syles
-$font:				"Open Sans","Segoe UI","Tahoma","Microsoft YaHei","微软雅黑";
-$textcolor:			$white;
-$background:		$black;
-$radius-small:		5px;
-$radius-big:		15px;
-$blur:				blur(3px);
+$font:					"Open Sans","Segoe UI","Tahoma","Microsoft YaHei","微软雅黑";
+$textcolor:				$white;
+$background:			$black;
+$radius-small:			5px;
+$radius-big:			15px;
+$blur:					blur(3px);
 
 //button
-$btn-left:			8px;
-$btn-top:			10px;
-$btn-bottom:		15px;
-$btn-padding:		5px 10px;
-$btn-margin:		0px $btn-left 0px 0px;
-$btn-line-margin:	$btn-top 0px $btn-bottom 0px;
-$btn-radius:		$radius-small;
-$btn-background:	darken($white, 10%);
-$btn-color:			lighten($black, 10%);
-$btn-hover:			lighten($black, 40%);
+$btn-left:				8px;
+$btn-top:				10px;
+$btn-bottom:			15px;
+$btn-padding:			5px 10px;
+$btn-margin:			0px $btn-left 0px 0px;
+$btn-line-margin:		$btn-top 0px $btn-bottom 0px;
+$btn-radius:			$radius-small;
+$btn-background:		darken($white, 10%);
+$btn-color:				lighten($black, 10%);
+$btn-hover:				lighten($black, 40%);
+$btn-border:			lighten($black, 20%);
 
 //global layout
-$window-top:		20px;
-$window-width:		980px;
-$window-bottom:		10px;
+$window-top:			20px;
+$window-width:			980px;
+$window-bottom:			10px;
 
 //navbar
-$navbar-height:		65px;
-$navbar-top:		15px;
-$navbar-background: $white;
-$navbar-alpha:		0.1;
-$navbar-size:		22px;
-$navbar-weight:		300;
-$navbar-margin:		10px;
+$navbar-height:			65px;
+$navbar-top:			15px;
+$navbar-background: 	$white;
+$navbar-alpha:			0.1;
+$navbar-size:			22px;
+$navbar-weight:			300;
+$navbar-margin:			10px;
 
 //login
-$login-top:			($window-top + $navbar-height);
-$login-radius:		$radius-big;
-$login-padding:		10px;
-$login-background:	rgba($navbar-background, .1);
+$login-top:				($window-top + $navbar-height);
+$login-radius:			$radius-big;
+$login-padding:			10px;
+$login-background:		darken($navbar-background, 72%);
 
 //input
-$input-margin:		10px 0px 0px;
-$input-short:		100px;
-$input-long:		250px;
-$area-large-width:	250px;
-$area-large-height:	200px;
+$input-margin:			0px 0px 5px 0px;
+$text-height-large:		25px;
+$text-short:			100px;
+$text-long:				250px;
+$area-large-width:		250px;
+$area-large-height:		200px;
 
 //viewer
-$viewer-width:		550px;
-$viewer-background:	$background;
-$viewer-border:		1px solid $white;
-$viewer-size:		24px;
-$viewer-radius:		0px;
-$viewer-padding:	0px 8px 0px 8px;
+$viewer-width:			550px;
+$viewer-background:		$background;
+$viewer-border:			1px solid $white;
+$viewer-size:			24px;
+$viewer-radius:			0px;
+$viewer-padding:		0px 8px 0px 8px;
 //team
 @mixin team ($id) {
 	background-color: hsl($id * 60, 100%, 50%);
 }
+
+//code
+$code-width:			890px;
+$code-border:			1px solid darken($white, 10%);
+$code-bar-height:		35px;
+$code-bar-back:			$login-background;
+$code-bar-padding:		5px 0px 5px 10px;
+$code-info-margin:		5px 0px;
+$code-line-padding:		1px 12px 0px 12px;
+$code-line-cover:		5px;
+
+$editor-title-text-top:	-7px;
