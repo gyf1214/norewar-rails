@@ -24,7 +24,7 @@ $btn-hover:			lighten($black, 40%);
 
 //global layout
 $window-top:		20px;
-$window-width:		1140px;
+$window-width:		980px;
 $window-bottom:		10px;
 
 //navbar
@@ -46,6 +46,8 @@ $login-background:	rgba($navbar-background, .1);
 $input-margin:		10px 0px 0px;
 $input-short:		100px;
 $input-long:		250px;
+$area-large-width:	250px;
+$area-large-height:	200px;
 
 //viewer
 $viewer-width:		550px;

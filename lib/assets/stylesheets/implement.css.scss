@@ -123,6 +123,13 @@ input {
 	}
 }
 
+textarea {
+	&.area-large {
+		width: $area-large-width;
+		height: $area-large-height;
+	}
+}
+
 .viewer {
 	width: $viewer-width;
 	margin: 0px auto;

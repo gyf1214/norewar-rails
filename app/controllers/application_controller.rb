@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
 	rescue_from ClientException, with: :client_error
 
 	protected
+
+	def require_login
+		raise ClientException.new "Login required!" if session[:user_id].nil?
+		@user = User.find session[:user_id]
+		raise ClientException.new "Bad login" if @user.nil?
+	end
+
 	def require_params(*pars)
 		for x in pars
 			raise ClientException.new "Field #{x} required!" if params[x].nil?
