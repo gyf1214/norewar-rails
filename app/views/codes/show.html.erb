@@ -1,0 +1,7 @@
+<h1><%= @code.name %></h1>
+<p>
+	<% @code.code.each_line do |line| %>
+		<%= line %>
+		<br/>
+	<% end %>
+</p>
