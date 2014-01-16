@@ -1,4 +1,3 @@
-require "./Robot"
 require "algorithms"
 
 module Judge

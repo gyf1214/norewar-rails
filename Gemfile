@@ -53,6 +53,5 @@ gem 'puma'
 gem 'sidekiq'
 
 #something judge uses
-gem 'logger'
 gem 'json'
 gem 'algorithms'

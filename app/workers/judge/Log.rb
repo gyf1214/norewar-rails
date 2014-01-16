@@ -1,6 +1,8 @@
-require "logger"
+#require "logger"
 
 module Judge
+	#sothing here
+=begin
 	module Log
 		@log = Logger.new(STDOUT)
 		@err = Logger.new(STDERR)
@@ -17,6 +19,16 @@ module Judge
 
 		def self.error(sth)
 			@err.error(sth)
+		end
+	end
+=end
+	module Log
+		def self.puts(sth)
+			STDOUT.puts sth
+		end
+
+		def self.error(sth)
+			STDERR.puts sth
 		end
 	end
 end

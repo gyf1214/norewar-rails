@@ -55,12 +55,15 @@ NorewarRails::Application.routes.draw do
   #   end
   root 'welcome#index'
   get 'error' => 'welcome#error'
+  get 'test' => 'welcome#test'
+
   resources :users do
     collection do
       get 'logout'
       post 'login'
     end
   end
+
   resources :codes do
     collection do
       get 'upload'

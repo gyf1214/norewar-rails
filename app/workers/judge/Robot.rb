@@ -1,10 +1,4 @@
-require "./Bios"
-require "./Code"
-require "./Interpreter"
-require "./Preprocessor"
-require "./Constants"
-
-module judge
+module Judge
 	class Robot
 		attr_accessor :x
 		attr_accessor :y

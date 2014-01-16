@@ -1,27 +1,22 @@
-require "./Robot"
-require "./Output"
-require "./RobotQueue"
-
 module Judge
 	class Match
 		attr_reader :robots
 
-		def initialize(name, competitors)
-			@name = name
+		def initialize(match)
 			@map = Array.new(Global::MapSize) do
 				Array.new(Global::MapSize, nil)
 			end
 			@robots = RobotQueue.new
 			@lives = []
-			Output::init(@name)
+			Output::init match
 			Output::start
-			competitors.each_with_index do |c, index|
+			match.codes.each_with_index do |c, index|
 				x = rand(Global::MapSize)
 				y = rand(Global::MapSize)
 				face = rand(4)
 				Output::push(x, y, index + 1, face)
 				robot = Robot.new(x, y, face, index + 1, true)
-				robot.load_script(c)
+				robot.load_script(c.code)
 				@robots.push(robot)
 				@lives.push(robot)
 				@map[x][y] = robot
@@ -101,7 +96,7 @@ module Judge
 					break if cnt <= 1
 					win = 0
 				end
-				Output::publish({:name => @name, :winner => win})
+				Output::finish win
 			end
 
 		def print

@@ -76,29 +76,27 @@ module Judge
 			if face_robot.nil?
 				@ram[x] = 0
 			else
-
 				@ram[x] = if face_robot.team == @team then 2 else 1 end
-				end
-				true
 			end
+			true
+		end
 
-			def _say(args, face_robot)
-				Output::say(@x, @y, "#{args[0..-1].join(" ")}")
-				true
-			end
+		def _say(args, face_robot)
+			Output::say(@x, @y, "#{args[0..-1].join(" ")}")
+			true
+		end
 
-			def _power(args, face_robot)
-				x = eval(args[0])
-				case x
-				when 0
-					@power = false
-				when 1
-					face_robot.power = false unless face_robot.nil?
-				when 2
-					face_robot.power = true unless face_robot.nil?
-				end
-				true
+		def _power(args, face_robot)
+			x = eval(args[0])
+			case x
+			when 0
+				@power = false
+			when 1
+				face_robot.power = false unless face_robot.nil?
+			when 2
+				face_robot.power = true unless face_robot.nil?
 			end
+			true
 		end
 	end
 end

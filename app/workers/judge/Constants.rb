@@ -54,22 +54,22 @@ module Judge
 			}
 			return map["nop"] if cmd.nil?
 			ret = if map[cmd.cmd].nil? then 0 else map[cmd.cmd] end
-				ret += cmd.args[0].to_i * cmd.args[0].to_i * 10 if cmd.cmd == "create"
-				ret
-			end
-
-			Permission = {
-				"move"		=> [true, true, true, true],
-				"jump"		=> [true, true, true, true],
-				"turn"		=> [true, true, true, true],
-				"die"		=> [true, true, true, true],
-				"nop"		=> [true, true, true, true],
-				"say"		=> [true, true, true, true],
-				"power"		=> [false, true, true, true],
-				"trans"		=> [false, true, true, true],
-				"ecomp"		=> [false, false, true, true],
-				"scan"		=> [false, false, true, true],
-				"create"	=> [false, false, false, true]
-			}
+			ret += cmd.args[0].to_i * cmd.args[0].to_i * 10 if cmd.cmd == "create"
+			ret
 		end
+
+		Permission = {
+			"move"		=> [true, true, true, true],
+			"jump"		=> [true, true, true, true],
+			"turn"		=> [true, true, true, true],
+			"die"		=> [true, true, true, true],
+			"nop"		=> [true, true, true, true],
+			"say"		=> [true, true, true, true],
+			"power"		=> [false, true, true, true],
+			"trans"		=> [false, true, true, true],
+			"ecomp"		=> [false, false, true, true],
+			"scan"		=> [false, false, true, true],
+			"create"	=> [false, false, false, true]
+		}
 	end
+end
