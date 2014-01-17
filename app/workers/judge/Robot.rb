@@ -58,5 +58,9 @@ module Judge
 				@code.replace(codes, @bios.segements[segement].offset)
 			end
 		end
+
+		def bind(output)
+			@output = output
+		end
 	end
 end

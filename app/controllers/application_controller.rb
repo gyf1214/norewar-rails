@@ -2,17 +2,37 @@ class ApplicationController < ActionController::Base
 	# Prevent CSRF attacks by raising an exception.
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
+	
+	class ClientException < Exception
+		attr_reader :message
 
-	include ApplicationHelper
+		def initialize(message)
+			@message = message
+		end
+	end
+
 	rescue_from ClientException, with: :client_error
 
-	protected
+	def current_user
+		@user = User.find session[:user_id]
+		if @user.nil? || @user.session != session[:session_id]
+			session[:user_id] = nil
+			@user = nil
+		end
+		@user
+	end
 
-	def require_login
+	def current_user!
 		raise ClientException.new "Login required!" if session[:user_id].nil?
 		@user = User.find session[:user_id]
-		raise ClientException.new "Bad login" if @user.nil?
+		if @user.nil? || @user.session != session[:session_id]
+			session[:user_id] = nil
+			raise ClientException.new "Bad login!"
+		end
+		@user
 	end
+
+	protected
 
 	def require_params(param, allow_empty, *pars)
 		for x in pars

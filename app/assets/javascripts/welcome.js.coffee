@@ -24,6 +24,7 @@ ready.push ->
 			dataType: 'json'
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success
+				Messenger.connect()
 
 	$('#reg_btn').click ->
 		$.ajax
@@ -35,3 +36,6 @@ ready.push ->
 			dataType: 'json'
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success
+
+	if $('#secret').text() is 'on' && !Messenger.connected()
+		Messenger.connect()

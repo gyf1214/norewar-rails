@@ -8,26 +8,27 @@ module Judge
 			end
 			@robots = RobotQueue.new
 			@lives = []
-			Output::init match
-			Output::start
+			@output = Output.new match
+			@output.start
 			match.codes.each_with_index do |c, index|
 				x = rand(Global::MapSize)
 				y = rand(Global::MapSize)
 				face = rand(4)
-				Output::push(x, y, index + 1, face)
+				@output.push(x, y, index + 1, face)
 				robot = Robot.new(x, y, face, index + 1, true)
+				robot.bind @output
 				robot.load_script(c.code)
 				@robots.push(robot)
 				@lives.push(robot)
 				@map[x][y] = robot
 			end
-			Output::pop(0)
+			@output.pop(0)
 		end
 
 		def next_frame
 			return 0 if @robots.empty?
 			next_delay, robot = @robots.fetch
-			Output::start
+			@output.start
 			robot.each do |r|
 				next unless r.power
 				oldx, oldy, oldface = r.x, r.y, r.face
@@ -48,24 +49,24 @@ module Judge
 					unless [oldx, oldy] == [newx, newy]
 						@map[oldx][oldy] = nil
 						@map[newx][newy] = r
-						Output::push(oldx, oldy, 0, nil)
-						Output::push(newx, newy, r.team, newface)
+						@output.push(oldx, oldy, 0, nil)
+						@output.push(newx, newy, r.team, newface)
 					end
-					Output::push(oldx, oldy, nil, newface) unless newface == oldface
+					@output.push(oldx, oldy, nil, newface) unless newface == oldface
 				when nil
 					@lives.delete(@map[oldx][oldy])
 					@map[oldx][oldy] = nil
-					Output::push(oldx, oldy, 0, nil)
+					@output.push(oldx, oldy, 0, nil)
 				else
 					live.delay = next_delay
 					@map[newx][newy] = live
 					@map[newx][newy].x, @map[newx][newy].y = newx, newy
 					@lives.push(live)
 					@robots.push(r)
-					Output::push(newx, newy, live.team, live.face)
+					@output.push(newx, newy, live.team, live.face)
 				end
 			end
-			Output::pop(next_delay)
+			@output.pop(next_delay)
 		end
 
 		def calc
@@ -92,12 +93,13 @@ module Judge
 			win = 0
 			while !next_time.nil? && next_time <= Global::Timeout
 				next_frame
-					cnt, win = calc
-					break if cnt <= 1
-					win = 0
-				end
-				Output::finish win
+				cnt, win = calc
+				break if cnt <= 1
+				win = 0
 			end
+			@output.finish win
+			win
+		end
 
 		def print
 			puts next_time

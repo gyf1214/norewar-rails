@@ -1,17 +1,17 @@
 <div class='nav-bar'>
 	<div class='container'>
 		<%= link_to 'Root', root_path, id: 'root_link', class: 'nav-btn pull-left' %>
-		<a class='nav-btn pull-left' href='##'>Competition</a>
-		<a class='nav-btn pull-left' href='##'>Result</a>
 		<%= link_to 'Codes', codes_path, class: 'nav-btn pull-left' %>
+		<%= link_to 'Match', matches_path, class: 'nav-btn pull-left' %>
 		<a class='nav-btn pull-left' href='##'>Discussion</a>
-		<a class='nav-btn pull-right <%= 'hide' unless session[:user_id].nil? %>'
+		<a class='nav-btn pull-right <%= 'hide' unless @user.nil? %>'
 			id='login_lst' href='##'>Login<small>▼</small></a>
-		<span class='pull-right <%= 'hide' if session[:user_id].nil? %>' id='welcome_span'>
+		<span class='pull-right <%= 'hide' if @user.nil? %>' id='welcome_span'>
 			<span id='welcome_txt' class='nav-text'>Welcome,
-			<%= User.find(session[:user_id]).name unless session[:user_id].nil? %>!</span>
+			<%= @user.name unless @user.nil? %>!</span>
 			<%= link_to 'Logout', logout_users_path, class: 'btn' %>
 		</span>
+		<span id='secret' class='hide'><%= if @user.nil? then 'off' else 'on' end %></span>
 	</div>
 
 	<div class='login'>

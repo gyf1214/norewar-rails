@@ -56,6 +56,7 @@ NorewarRails::Application.routes.draw do
   root 'welcome#index'
   get 'error' => 'welcome#error'
   get 'test' => 'welcome#test'
+  post 'event' => 'welcome#event'
 
   resources :users do
     collection do
@@ -70,4 +71,6 @@ NorewarRails::Application.routes.draw do
       post 'transport'
     end
   end
+
+  resources :matches
 end

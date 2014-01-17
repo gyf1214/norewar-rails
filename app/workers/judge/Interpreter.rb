@@ -82,7 +82,7 @@ module Judge
 		end
 
 		def _say(args, face_robot)
-			Output::say(@x, @y, "#{args[0..-1].join(" ")}")
+			@output.say(@x, @y, "#{args[0..-1].join(" ")}") unless @output.nil?
 			true
 		end
 
