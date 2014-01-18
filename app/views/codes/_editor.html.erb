@@ -7,11 +7,16 @@
 	<div class='editor-container'>
 		<div class='editor-bar'>
 			<div class='editor-info pull-left'>
-				<span id='line_info'><%= @code.code.lines.size %></span>
+				<span id='line_info'></span>
 				<span>line(s)</span>
 			</div>
 			<%= f.submit 'Save', class: 'btn pull-right' %>
 		</div>
-		<%= f.text_area :code, class: 'editor-area' %>
+		<div class="code-line-num-container">
+			<div class="code-line-num" id="code-line-num"></div>
+		</div>
+		<div class="editor-area-container">
+			<%= f.text_area :code, class: 'editor-area' %>
+		</div>
 	</div>
 <% end %>
