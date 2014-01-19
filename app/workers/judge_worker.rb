@@ -25,5 +25,6 @@ class JudgeWorker
 		Judge::Log::puts "Match #{match.name} finished"
 		Curl.post 'http://localhost:3000/event', jid: jid, msg: JSON.dump(msg: 'finish')
 		Curl.post 'http://localhost:3000/event', jid: jid, msg: JSON.dump(winner: winner)
+		Curl.delete 'http://localhost:3000/event', jid: jid
 	end
 end

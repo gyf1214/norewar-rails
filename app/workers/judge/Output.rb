@@ -1,5 +1,3 @@
-require "json"
-
 module Judge
 	class Output
 		def initialize(match)
@@ -29,7 +27,7 @@ module Judge
 		def pop(time)
 			raise "Time not increase!" unless time > @time
 			@time = time
-			@match.states.push time: @time, delta: @ret, say: @say
+			@match.states.create time: @time, delta: @ret, say: @say
 		end
 
 		def finish(winner)
