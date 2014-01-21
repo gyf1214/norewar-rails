@@ -18,5 +18,5 @@ ready.push ->
         $('#code_code').autosize()
         getLineNumbersAndResize()
 
-    $('#code_code').keyup ->
-        getLineNumbersAndResize()
+    $('#code_code').bind('input propertychange', ->
+        getLineNumbersAndResize())
