@@ -4,10 +4,10 @@
 
 ready.push ->
     getLineNumbers = ->
-        lines = $('#code_code').val().split('\n').length
-        lines = 0 if $('#code_code').val() == ''
-        $('#line_info').text lines
-        $('#code-line-num').html ( if lines > 0 then (i for i in [1..lines]).join(" <br> ") else "" )
+        line_count = $('#code_code').val().split('\n').length
+        line_count = 0 if $('#code_code').val() == ''
+        $('#line_info').text ( if line_count>1 then "#{line_count} lines" else "#{line_count} line")
+        $('#code-line-num').html ( if line_count > 0 then (i for i in [1..line_count]).join(" <br> ") else "" )
 
     if $('#code_code').length
         getLineNumbers()
