@@ -2,7 +2,7 @@
 	<h1>
 		<span><%= link_to @user.name, codes_path %></span>
 		/
-		<%= f.text_field :name, class: 'text-long text-large editor-title-text inline', placeholder: 'Enter Name...' %>
+		<%= f.text_field :name, class: 'text-long text-large editor-title-text inline', placeholder: 'Enter Name...', required: true %>
 	</h1>
 	<div class='editor-container'>
 		<div class='editor-bar'>
@@ -15,7 +15,7 @@
 			<div class="code-line-num" id="code-line-num"></div>
 		</div>
 		<div class="editor-area-container">
-			<%= f.text_area :code, class: 'editor-area' %>
+			<%= f.text_area :code, class: 'editor-area', required: true %>
 		</div>
 	</div>
 <% end %>
