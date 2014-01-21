@@ -45,6 +45,7 @@ $login-top:				($window-top + $navbar-height);
 $login-radius:			$radius-big;
 $login-padding:			10px;
 $login-background:		darken($navbar-background, 72%);
+$blur:                  none;
 
 //input
 $input-margin:			0px 0px 5px 0px;
@@ -91,8 +92,12 @@ $editor-bar-back:		$code-bar-back;
 $editor-bar-padding:	$code-bar-padding;
 $editor-info-margin:	$code-info-margin;
 $editor-line-height:	23px;
+$code-line-num-width:   40px;
 $editor-area-side:		10px;
-$editor-area-margin:	10px 0px 10px $editor-area-side;
-$editor-area-width:		($code-width - $editor-area-side);
+$code-line-num-side:    4px;
+$editor-area-margin:	$editor-area-side $editor-area-side $editor-area-side $editor-area-side;
+$editor-area-width:		($code-width - 2*$editor-area-side - $code-line-num-width);
 $editor-area-height:	640px;
+$editor-area-container-height:  $editor-area-height + 2*$editor-area-side;
 $editor-color:			$textcolor;
+

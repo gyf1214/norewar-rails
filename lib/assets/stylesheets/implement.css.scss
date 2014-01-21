@@ -89,7 +89,7 @@ a {
 		font-weight: $navbar-weight;
 		text-align: center;
 		width: auto;
-		margin: 0px $navbar-margin 0px $navbar-margin;		
+		margin: 0px $navbar-margin 0px $navbar-margin;
 	}
 
 	.nav-btn {
@@ -214,7 +214,7 @@ h1 .btn {
 				padding: $code-line-padding;
 				&.code-line-num {
 					border-right: $code-border;
-				}	
+				}
 			}
 			&.code-line-cover {
 				height: $code-line-cover;
@@ -234,6 +234,7 @@ h1 .btn {
 		width: $editor-width;
 		border: $editor-border;
 		margin: $editor-margin;
+		overflow: hidden;
 
 		.editor-bar {
 			height: $editor-bar-height;
@@ -254,6 +255,30 @@ h1 .btn {
 			margin: $editor-area-margin;
 			background: transparent;
 			color: $editor-color;
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.code-line-num-container {
+					border-right: $code-border;
+					float: left;
+					width: $code-line-num-width;
+					height: $editor-area-container-height;
+				}
+
+		.code-line-num{
+			margin-top: $editor-area-side;
+			margin-left: $code-line-num-side;
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.editor-area-container{
+			float: left;
+			width: $editor-area-width - $code-line-num-width;
+			height: $editor-area-container-height;
 		}
 	}
 }
+
+
