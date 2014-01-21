@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		unless User.find_by_name(params[:name]).nil?
 			raise ClientException.new "User with the same name exists!"
 		end
-		@user = User.create name: params[:name], password: params[:password]
+		@user = User.create name: params[:name], password: params[:password], session: session[:session_id]
 		session[:user_id] = @user._id
 		render json: { success: true }
 	end
@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 		@user = User.find session[:user_id]
 		@user.unset :session unless @user.nil? || @user.session != session[:session_id]
 		session[:user_id] = nil unless session[:user_id].nil?
+		unless WebsocketRails.users[@user._id].nil?
+			WebsocketRails.users.delete WebsocketRails.users[@user._id]
+		end
 		redirect_to root_path
 	end
 
