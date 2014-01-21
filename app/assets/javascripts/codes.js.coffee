@@ -9,7 +9,8 @@ ready.push ->
         $('#line_info').text lines
         $('#code-line-num').html ( if lines > 0 then (i for i in [1..lines]).join(" <br> ") else "" )
 
-    getLineNumbers()
+    if $('#code_code').length
+        getLineNumbers()
 
     $('#code_code').keyup ->
         getLineNumbers()
