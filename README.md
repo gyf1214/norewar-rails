@@ -1,7 +1,7 @@
 NoreWar-Rails
 ===============
 
-An implement of NoreWar competition game on rails. See [SHSTuring/norewar](https://github.com/SHSTuring/norewar) for more infomation about NoreWar.
+An implement of NoreWar competition game on rails. See [SHSTuring/norewar](https://github.com/SHSTuring/norewar) for more information about NoreWar.
 
 Requirements
 --------------
@@ -36,6 +36,11 @@ Start [Mongo](http://www.mongodb.org) & [Redis](http://redis.io) fist.
 Start [Sidekiq](https://github.com/mperham/sidekiq) to process matches:
 
 	bundle exec sidekiq
+
+For thread safety of mongo, the pool size of working threads & mongo connections should be limited. For efficiency consideration, I set the connection pool size to 10 & thread pool size to 4. Check your config/mongo.yml for configuration and use the following command to start sidekiq: (which provide default configuration starting 25 threads!)
+	
+	# start 4 working threads
+	bundle exec sidekiq -c 4
 
 Problems
 -------------
