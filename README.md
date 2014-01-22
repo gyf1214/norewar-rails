@@ -10,7 +10,7 @@ I use Ruby 2.0.0p353 & Rails 4.0.2. Other versions is untested but Ruby 1.9.7 & 
 
 [Mongo](http://www.mongodb.org) is required for database. I use version 2.4.5.
 
-[Redis](http://redis.io) is required for cache. I tested with version 2.6.16. According to Sidekiq version 2.4 is required at least
+[Redis](http://redis.io) is required for cache. I tested with version 2.6.16. According to [Sidekiq](https://github.com/mperham/sidekiq) version 2.4 is required at least.
 
 
 Installation
@@ -45,5 +45,5 @@ Please open an [issue](https://github.com/gyf1214/norewar-rails/issues).
 Contribution
 -------------
 
-Please open a [PR](https://github.com/gyf1214/norewar-rails/pulls)
+Please open a [PR](https://github.com/gyf1214/norewar-rails/pulls).
 
