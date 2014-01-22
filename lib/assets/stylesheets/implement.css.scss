@@ -284,4 +284,30 @@ h1 .btn {
 	}
 }
 
+.table {
+	border: $table-border;
+	border-collapse: collapse;
+	background: $table-back;
 
+	&.table-full {
+		width: 100%;
+	}
+
+	&.table-center {
+		text-align: center;
+	}
+
+	th {
+		border: $table-border;
+		background: $table-header-back;
+		color: $table-header-color;
+		padding: $table-padding;
+	}
+
+	td {
+		border: $table-border;
+		background: $table-back;
+		color: $table-color;
+		padding: $table-padding
+	}
+}

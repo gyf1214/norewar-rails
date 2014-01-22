@@ -1,6 +1,14 @@
 <h1>All Matches Relevant to <%= @user.name %></h1>
-<ul>
+<table class='table table-full table-center'>
+	<tr>
+		<th>Name</th>
+		<th>Status</th>
+	</tr>
 	<% @matches.each do |index, match| %>
-		<li><%= match.name %></li>
+		<% status = if match.winner.nil? then 'Judging...' else 'Finished' end %>
+		<tr>
+			<td><%= match.name %></td>
+			<td><%= status %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>
