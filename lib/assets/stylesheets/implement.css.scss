@@ -250,8 +250,11 @@ h1 .btn {
 
 		.editor-area {
 			@include fix-width($editor-area-width);
-			height: $editor-area-height;
+			min-height: $editor-area-height;
 			border: none;
+			outline: none;
+			resize: none;
+			white-space: nowrap;
 			margin: $editor-area-margin;
 			background: transparent;
 			color: $editor-color;
@@ -267,7 +270,7 @@ h1 .btn {
 				}
 
 		.code-line-num{
-			margin-top: $editor-area-side;
+			margin-top: $editor-area-side + 0.5px;
 			margin-left: $code-line-num-side;
 			font-family: monospace;
 			font-size: 1em;
@@ -276,7 +279,7 @@ h1 .btn {
 		.editor-area-container{
 			float: left;
 			width: $editor-area-width - $code-line-num-width;
-			height: $editor-area-container-height;
+			min-height: $editor-area-container-height;
 		}
 	}
 }
