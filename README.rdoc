@@ -1,5 +1,0 @@
-== Nore War
-
-	An implement on rails for the Nore War competition game.
-	
-	Details on https://github.com/SHSTuring/norewar
