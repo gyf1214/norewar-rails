@@ -6,5 +6,5 @@ class State
 	key :delta, Array
 	belongs_to :match
 
-	attr_accessible :time, :say, :delta
+	attr_accessible :time, :say, :delta, :match_id
 end

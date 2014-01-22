@@ -3,7 +3,9 @@ module Judge
 		def initialize(match)
 			@match = match
 			@time = -1
+			@buffer = Array.new
 		end
+		
 		def start
 			@ret = []
 			@say = []
@@ -27,10 +29,11 @@ module Judge
 		def pop(time)
 			raise "Time not increase!" unless time > @time
 			@time = time
-			@match.states.create time: @time, delta: @ret, say: @say
+			@buffer.push time: @time, delta: @ret, say: @say, match_id: @match._id
 		end
 
 		def finish(winner)
+			MongoMapper.database['states'].insert @buffer
 			@match.winner = winner
 			@match.save
 		end
