@@ -27,9 +27,9 @@ If you have not installed Bundler install it first:
 Execution
 -------------
 
-Start [Mongo](http://www.mongodb.org) & [Redis](http://redis.io) fist.
+Start [Mongo](http://www.mongodb.org) & [Redis](http://redis.io) first.
 
-[Thin](http://code.macournoyer.com/thin/) is used as the web server. Start with:
+[Thin](http://code.macournoyer.com/thin/) is used as the web server. Start it with:
 
 	bundle exec thin start
 
@@ -37,7 +37,7 @@ Start [Sidekiq](https://github.com/mperham/sidekiq) to process matches:
 
 	bundle exec sidekiq
 
-For thread safety of mongo, the pool size of working threads & mongo connections should be limited. For efficiency consideration, I set the connection pool size to 10 & thread pool size to 4. Check your config/mongo.yml for configuration and use the following command to start sidekiq: (which provide default configuration starting 25 threads!)
+For thread safety of mongo, the pool size of working threads & mongo connections should be limited. For efficiency consideration, I set the connection pool size to 10 & thread pool size to 4. Check your [config/mongo.yml](https://github.com/gyf1214/norewar-rails/blob/master/config/mongo.yml) for configuration and use the following command to start [Sidekiq](https://github.com/mperham/sidekiq): (which provide default configuration starting 25 threads!)
 	
 	# start 4 working threads
 	bundle exec sidekiq -c 4
