@@ -72,7 +72,7 @@ NorewarRails::Application.routes.draw do
   resources :codes do
     collection do
       get 'upload'
-      post 'transport'
+      post 'file'
     end
   end
 

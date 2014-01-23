@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
 	def require_params(param, allow_empty, *pars)
 		for x in pars
 			raise ClientException.new "Field #{x} required!" if param[x].nil?
-			raise ClientException.new "Field #{x} empty" if param[x].empty? && !allow_empty
+			raise ClientException.new "Field #{x} empty" if  !allow_empty && param[x].empty?
 		end
 	end
 

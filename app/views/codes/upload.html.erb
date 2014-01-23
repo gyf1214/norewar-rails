@@ -1,0 +1,9 @@
+<%= form_for @code, url: { action: 'file' }, html: { class: 'editor' } do |f| %>
+	<h1>
+		<span><%= link_to @user.name, codes_path %></span>
+		/
+		<%= f.text_field :name, class: 'text-long text-large editor-title-text inline', placeholder: 'Enter Name...', required: true %>
+	</h1>
+	<%= f.file_field :file, required: true %>
+	<%= f.submit class: 'btn' %>
+<% end %>
