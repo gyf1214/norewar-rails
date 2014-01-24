@@ -7,7 +7,7 @@
 	<% @matches.each do |index, match| %>
 		<% status = if match.winner.nil? then 'Judging...' else 'Finished' end %>
 		<tr>
-			<td><%= match.name %></td>
+			<td><%= link_to match.name, match %></td>
 			<td><%= status %></td>
 		</tr>
 	<% end %>

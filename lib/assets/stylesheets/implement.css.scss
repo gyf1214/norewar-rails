@@ -65,6 +65,11 @@ a {
 	float: right;
 }
 
+.pull-left {
+	top: 0;
+	float: left;
+}
+
 .container {
 	width: $window-width;
 	margin: 0px auto $window-bottom auto;
@@ -173,7 +178,7 @@ input {
 			}
 
 			@for $i from 0 through 5 {
-				.team#{$i + 1} {
+				&.team#{$i + 1} {
 					@include team($i);
 				}
 			}
@@ -182,6 +187,12 @@ input {
 
 	.viewer-bar {
 		padding: $viewer-padding;
+
+		@for $i from 0 through 5 {
+			.team#{$i} {
+				color: hsl($i * 60, 100%, 50%);
+			}
+		}
 	}
 }
 

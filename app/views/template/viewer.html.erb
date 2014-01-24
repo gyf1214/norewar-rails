@@ -1,6 +1,24 @@
 <div class='viewer'>
-	<div class='viewer-bar pull-right'>
-		<input type='text' class='text-short' id='key_txt' />
+	<input type='hidden' id='match_id' value="<%= @match._id %>" />
+	<table class='pull-left'>
+		<tbody>
+			<% 16.times do |i| %>
+				<tr>
+					<% 16.times do |j| %>
+						<td id='map_<%= i %>_<%= j %>' class='team0'></td>
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class='viewer-bar pull-left'>
+		<% @match.codes.each_with_index do |code, i| %>
+			<h3 class="team<%= i %>">
+				<span><%= code.user.name %></span>
+				/
+				<span><%= code.name %></span>
+			</h3>
+		<% end %>
 		<div class='btn-line'>
 			<a href='##' id='start_btn' class='btn'>Start</a>
 			<a href='##' id='stop_btn' class='btn'>Stop</a>
@@ -9,19 +27,5 @@
 			<a href='##' id='play_btn' class='btn'>Play</a>
 			<a href='##' id='pause_btn' class='btn'>Pause</a>
 		</div>
-		<div class='btn-line'>
-			<a href='##' id='push_btn' class='btn'>Push</a>
-		</div>
 	</div>
-	<table>
-		<tbody>
-			<% 16.times do |i| %>
-				<tr>
-					<% 16.times do |j| %>
-						<td id='map_<%= i %>_<%= j %>' class='team<%= (i + j) % 6 + 1 %>'></td>
-					<% end %>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
 </div>

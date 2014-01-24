@@ -7,8 +7,8 @@ class Match
 	key :winner, Integer
 
 	many :states do
-		def before(time)
-			where :time.lte => time
+		def around(after, before)
+			where({:time.gte => after, :time.lte => before})
 		end
 
 		def at(time)

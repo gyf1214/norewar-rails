@@ -76,5 +76,9 @@ NorewarRails::Application.routes.draw do
     end
   end
 
-  resources :matches
+  resources :matches do
+    member do
+      post 'view'
+    end
+  end
 end
