@@ -19,4 +19,10 @@ class WelcomeController < ApplicationController
 		Job.create jid: jid, users: [user._id]
 		render nothing: true
 	end
+
+	def clear
+		MongoMapper.database['states'].remove
+		MongoMapper.database['matches'].remove
+		render nothing: true
+	end
 end

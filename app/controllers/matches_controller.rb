@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
 	def index
 		@matches = Hash.new
 		@user.codes.each do |code|
-			Match.where(code_ids: code._id).fields(:name, :winner).all.each do |match|
+			Match.where(code_ids: code._id).fields(:name, :winner, :created_at, :updated_at).all.each do |match|
 				@matches.store match._id, match
 			end
 		end

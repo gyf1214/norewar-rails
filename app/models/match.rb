@@ -5,6 +5,7 @@ class Match
 	key :code_ids, Array
 	many :codes, in: :code_ids
 	key :winner, Integer
+	timestamps!
 
 	many :states do
 		def around(after, before)
