@@ -3,8 +3,8 @@
 	<tr>
 		<th>Name</th>
 		<th>Status</th>
-		<th>Created</th>
-		<th>Updated</th>
+		<th>Created At</th>
+		<th>Finished At</th>
 	</tr>
 	<% @matches.each do |index, match| %>
 		<% status = if match.finished? then 'Finished' else 'Judging...' end %>
@@ -18,7 +18,7 @@
 			</td>
 			<td><%= status %></td>
 			<td><%= match.created_at %></td>
-			<td><%= match.updated_at %></td>
+			<td><%= if match.finished? then match.updated_at else '-' end %></td>
 		</tr>
 	<% end %>
 </table>
