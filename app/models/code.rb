@@ -5,5 +5,7 @@ class Code
 	key :code, String
 	belongs_to :user
 
+	timestamps!
+
 	attr_accessible :name, :code
 end

@@ -43,6 +43,7 @@ class CodesController < ApplicationController
 		@code = @user.codes.find params[:id]
 		raise ClientException.new "Code not found!" if @code.nil?
 		@code.set params[:code]
+		@code.save
 		redirect_to @code
 	end
 
@@ -58,5 +59,14 @@ class CodesController < ApplicationController
 		file = params[:code][:file].read
 		code = @user.codes.create name: params[:code][:name], code: file
 		redirect_to code
+	end
+
+	def default
+		require_params params, false, :id
+		@code = @user.codes.find params[:id]
+		raise ClientException.new "Code not found!" if @code.nil?
+		@user.set default_id: params[:id]
+		@code.save
+		redirect_to @code
 	end
 end

@@ -71,6 +71,10 @@ NorewarRails::Application.routes.draw do
   end
 
   resources :codes do
+    member do
+      get 'default'
+    end
+    
     collection do
       get 'upload'
       post 'file'

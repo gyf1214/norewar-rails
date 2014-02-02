@@ -1,7 +1,7 @@
 <h1>
 	<span><%= link_to @user.name, codes_path %></span>
 	/
-	<span><%= link_to @code.name, @code %></span>
+	<span><%= link_to @code.name + if @code._id == @user.default_id then '(Default)' else '' end, @code %></span>
 </h1>
 <div class='code'>
 	<div class='code-bar'>
@@ -11,6 +11,7 @@
 		</div>
 		<%= link_to 'Delete', @code, method: 'delete', class: 'btn btn-alert pull-right' %>
 		<%= link_to 'Edit', edit_code_path(@code), class: 'btn pull-right' %>
+		<%= link_to 'Set Default', default_code_path(@code), class: 'btn pull-right' %>
 	</div>
 	<table>
 		<% i = 1 %>

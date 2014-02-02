@@ -4,12 +4,19 @@
 	<%= link_to 'Upload', upload_codes_path, class: 'btn pull-right' %>
 	<%= link_to 'Create', new_code_path, class: 'btn pull-right' %>
 </h1>
-<ul>
+<table class='table table-full'>
+	<tr>
+		<th>Name</th>
+		<th>Lines</th>
+		<th>Created</th>
+		<th>Updated</th>
+	</tr>
 	<% @codes.each do |code| %>
-		<li>
-			<span><%= link_to code.name, code %></span> 
-			<!-- <span><%= link_to "Edit", edit_code_path(code) %></span>
-			<span><%= link_to "Delete", code, method: :delete %></span> -->
-		</li>
+		<tr>
+			<td><%= link_to code.name + if code._id == @user.default_id then '(Default)' else '' end, code %></td>
+			<td><%= code.code.lines.size %></td>
+			<td><%= code.created_at %></td>
+			<td><%= code.updated_at %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>
