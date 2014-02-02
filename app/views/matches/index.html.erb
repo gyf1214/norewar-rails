@@ -7,9 +7,15 @@
 		<th>Updated</th>
 	</tr>
 	<% @matches.each do |index, match| %>
-		<% status = if match.winner.nil? then 'Judging...' else 'Finished' end %>
+		<% status = if match.finished? then 'Finished' else 'Judging...' end %>
 		<tr>
-			<td><%= link_to match.name, match %></td>
+			<td>
+				<% if match.finished? %>
+					<%= link_to match.name, match %>
+				<% else %>
+					<%= match.name %>
+				<% end %>
+			</td>
 			<td><%= status %></td>
 			<td><%= match.created_at %></td>
 			<td><%= match.updated_at %></td>

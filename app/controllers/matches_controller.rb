@@ -20,6 +20,7 @@ class MatchesController < ApplicationController
 		require_params params, false, :id, :after, :before
 		@match = Match.find params[:id]
 		raise ClientException.new "Match not found!" if @match.nil?
+		raise ClientException.new "Match still judging!" unless @match.finished?
 		ret = @match.states.where(:time.gt => params[:after].to_i)
 		.where(:time.lte => params[:before].to_i).all
 		respond_to do |format|

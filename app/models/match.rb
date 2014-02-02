@@ -7,6 +7,10 @@ class Match
 	key :winner, Integer
 	timestamps!
 
+	def finished?
+		!winner.nil?
+	end
+
 	many :states do
 		def around(after, before)
 			where({:time.gte => after, :time.lte => before})
