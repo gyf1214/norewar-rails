@@ -14,7 +14,8 @@ ready.push ->
 		$('#username_txt').val ''
 		$('#password_txt').val ''
 
-	$('#log_btn').click ->
+	login = ->
+		name = $('#username_txt').val()
 		$.ajax
 			url: '/users/login'
 			type: 'POST'
@@ -23,8 +24,15 @@ ready.push ->
 				password:	$('#password_txt').val()
 			dataType: 'json'
 			success: (res) ->
-				show_welcome $('#username_txt').val() if res.success
+				show_welcome name if res.success
 				Messenger.connect()
+
+	$('#log_btn').click ->
+		login()
+
+	$('#login_form').submit (e) ->
+		e.preventDefault()
+		login()
 
 	$('#reg_btn').click ->
 		$.ajax
