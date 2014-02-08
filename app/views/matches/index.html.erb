@@ -1,4 +1,10 @@
-<h1>All Matches Relevant to <%= @user.name %></h1>
+<h1>
+	<span><%= link_to '$', root_path %></span>
+	/
+	<span>Match</span>
+	/
+	<span><%= link_to @user.name, matches_path %></span>
+</h1>
 <table class='table table-full'>
 	<tr>
 		<th>Name</th>
