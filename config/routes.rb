@@ -86,4 +86,7 @@ NorewarRails::Application.routes.draw do
       post 'view'
     end
   end
+
+  resources :contests do
+  end
 end

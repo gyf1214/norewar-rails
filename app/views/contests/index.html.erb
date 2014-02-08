@@ -1,0 +1,23 @@
+<h1>
+	<span><%= link_to '$', root_path %></span>
+	/
+	<span><%= link_to 'Contests', contests_path %></span>
+</h1>
+<table class='table table-full'>
+	<tr>
+		<th>Name</th>
+		<th>Status</th>
+		<th>Competitors</th>
+		<th>Created At</th>
+		<th>Updated At</th>
+	</tr>
+	<% Contest.each do |contest| %>
+	<tr>
+		<td><%= link_to contest.name, contest %></td>
+		<td><%= contest.status_msg %></td>
+		<td><%= contest.competitors.count %></td>
+		<td><%= contest.created_at %></td>
+		<td><%= contest.updated_at %></td>
+	</tr>
+	<% end %>		
+</table>

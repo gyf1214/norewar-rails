@@ -1,0 +1,12 @@
+<%= form_for @contest do |f| %>
+	<h1>
+		<span>$</span>
+		/
+		<span>Contest</span>
+		/
+		<%= f.text_field :name, class: 'text-long text-large text-title inline', placeholder: 'Enter Name...', required: true %>
+	</h1>
+	<%= f.label :limit, for: :limit %>
+	<%= f.text_field :limit, class: 'text-long', placeholder: 'Enter Competitor Limit...' %>
+	<%= f.submit 'Save', class: 'btn' %>
+<% end %>
