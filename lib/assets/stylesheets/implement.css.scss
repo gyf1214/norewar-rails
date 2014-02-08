@@ -149,6 +149,12 @@ input {
 		&.text-long {
 			width: $text-long;
 		}
+
+		&.text-title {
+			position: relative;
+			top: $text-title-top;
+			margin: 0px;
+		}
 	}
 }
 
@@ -235,12 +241,6 @@ h1 .btn {
 }
 
 .editor {
-	.editor-title-text {
-		position: relative;
-		top: $editor-title-text-top;
-		margin: 0px;
-	}
-
 	.editor-container {
 		width: $editor-width;
 		border: $editor-border;
