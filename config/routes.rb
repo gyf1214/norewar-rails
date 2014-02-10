@@ -60,7 +60,6 @@ NorewarRails::Application.routes.draw do
 
   constraints ip: /127.0.0.1/ do
     post 'event' => 'jobs#event'
-    delete 'event' => 'jobs#delete'
   end
 
   resources :users do
@@ -88,5 +87,10 @@ NorewarRails::Application.routes.draw do
   end
 
   resources :contests do
+    member do
+      get 'join'
+      get 'open'
+      get 'test'
+    end
   end
 end

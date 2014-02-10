@@ -1,0 +1,27 @@
+<h1>
+	<span><%= link_to '$', root_path %></span>
+	/
+	<span><%= link_to 'Contests', contests_path %></span>
+	/
+	<span><%= link_to @contest.name, @contest %></span>
+
+	<% if @contest.status == 0 %>
+		<%= link_to 'Join', join_contest_path, class: 'btn pull-right' unless @contest.joint?(@user) %>
+		<%= link_to 'Open', open_contest_path, class: 'btn pull-right' %>
+
+	<% end %>
+	<%= link_to 'Test', test_contest_path, class: 'btn pull-right' %>
+</h1>
+
+<table class='table'>
+	<tr>
+		<th>Competitor</th>
+		<th>Score</th>
+	</tr>
+	<% @contest.rank.each do |competitor| %>
+	<tr>
+		<td><%= competitor.user.name %></td>
+		<td><%= competitor.score %></td>
+	</tr>
+	<% end %>
+</table>

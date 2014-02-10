@@ -12,7 +12,7 @@ ready.push ->
 		fetching = false
 		playing = false
 		timer = null
-		interval = 50
+		interval = 20
 
 		show = (index) ->
 			for delta in match_buffer[index].delta

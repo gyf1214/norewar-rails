@@ -10,10 +10,4 @@ class JobsController < ApplicationController
 		end
 		redirect_to root_path
 	end
-
-	def delete
-		job = Job.find_by_jid params[:jid]
-		job.destroy unless job.nil?
-		redirect_to root_path
-	end
 end

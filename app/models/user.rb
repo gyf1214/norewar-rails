@@ -8,7 +8,7 @@ class User
 	key :default_id, ObjectId
 
 	def default
-		codes.find :default_id
+		codes.find default_id
 	end
 
 	attr_accessible :name, :password, :codes, :session, :default_id

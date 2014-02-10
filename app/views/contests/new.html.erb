@@ -6,7 +6,7 @@
 		/
 		<%= f.text_field :name, class: 'text-long text-large text-title inline', placeholder: 'Enter Name...', required: true %>
 	</h1>
-	<%= f.label :limit, for: :limit %>
-	<%= f.text_field :limit, class: 'text-long', placeholder: 'Enter Competitor Limit...' %>
+	<%= f.label :round, for: :round %>
+	<%= f.text_field :round, class: 'text-long', placeholder: 'Enter Rounds...', required: true %>
 	<%= f.submit 'Save', class: 'btn' %>
 <% end %>
