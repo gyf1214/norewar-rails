@@ -1,16 +1,3 @@
-=begin
-require 'judge/Bios'
-require 'judge/Code'
-require 'judge/Constants'
-require 'judge/Interpreter'
-require 'judge/Log'
-require 'judge/Match'
-require 'judge/Output'
-require 'judge/Preprocessor'
-require 'judge/Robot'
-require 'judge/RobotQueue'
-=end
-
 class JudgeWorker
 	include Sidekiq::Worker
 	sidekiq_options :retry => false
@@ -36,6 +23,5 @@ class JudgeWorker
 			end
 			contest.save
 		end
-		contest.next_round
 	end
 end

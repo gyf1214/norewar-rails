@@ -36,6 +36,7 @@ class ContestsController < ApplicationController
 		@contest = Contest.find params[:id]
 		raise ClientException.new 'Contest not found!' if @contest.nil?
 		raise ClientException.new 'Contest has already started!' if @contest.status > 0
+		raise ClientException.new 'Competitor size must be odd!' unless @contest.competitors.size % 2 == 0
 		@contest.status = 1
 		@contest.save
 		redirect_to @contest

@@ -50,7 +50,10 @@ module Judge
 				"scan"		=> 20,
 				"ecomp"		=> 2,
 				"say"		=> 1,
-				"power"		=> 10
+				"power"		=> 10,
+				"set"		=> 1,
+				"inc"		=> 1,
+				"dec"		=> 1,
 			}
 			return map["nop"] if cmd.nil?
 			ret = if map[cmd.cmd].nil? then 0 else map[cmd.cmd] end
@@ -69,7 +72,10 @@ module Judge
 			"trans"		=> [false, true, true, true],
 			"ecomp"		=> [false, false, true, true],
 			"scan"		=> [false, false, true, true],
-			"create"	=> [false, false, false, true]
+			"create"	=> [false, false, false, true],
+			"set"		=> [true, true, true, true],
+			"inc"		=> [true, true, true, true],
+			"dec"		=> [true, true, true, true]
 		}
 	end
 end

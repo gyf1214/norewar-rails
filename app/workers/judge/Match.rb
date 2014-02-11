@@ -75,11 +75,11 @@ module Judge
 				if ret[r.team].nil? then ret[r.team] = 1 else ret[r.team] += 1 end
 			end
 			cnt = 0
-			t = 0
+			t = -1
 			ret.each_with_index do |i, k|
 				if !i.nil? && i > 0
 					cnt += 1
-					t = k
+					t = k if ret[t] < ret[k] || t == -1
 				end
 			end
 			[cnt, t]
@@ -95,7 +95,6 @@ module Judge
 				next_frame
 				cnt, win = calc
 				break if cnt <= 1
-				win = 0
 			end
 			@output.finish win
 			win

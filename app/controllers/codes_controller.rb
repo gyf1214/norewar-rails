@@ -42,7 +42,8 @@ class CodesController < ApplicationController
 		require_params params[:code], true, :code
 		@code = @user.codes.find params[:id]
 		raise ClientException.new "Code not found!" if @code.nil?
-		@code.set params[:code]
+		@code.name = params[:code][:name]
+		@code.code = params[:code][:code]
 		@code.save
 		redirect_to @code
 	end

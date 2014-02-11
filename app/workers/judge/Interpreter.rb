@@ -7,6 +7,13 @@ module Judge
 			name.to_i
 		end
 
+		def eval_var(name)
+			return nil unless name =~ /^\$/
+			x = name[1..-1].to_i
+			return nil if @ram[x].nil?
+			x
+		end
+
 		def run(command, face_robot)
 			return true unless Global::Permission[command.cmd][@level]
 			self.send("_" + command.cmd, command.args, face_robot)
@@ -96,6 +103,25 @@ module Judge
 			when 2
 				face_robot.power = true unless face_robot.nil?
 			end
+			true
+		end
+
+		def _set(args, face_robot)
+			x = eval_var(args[0])
+			y = eval(args[1])
+			@ram[x] = y unless x.nil?
+			true
+		end
+
+		def _inc(args, face_robot)
+			x = eval_var(args[0])
+			@ram[x] = @ram[x] + 1 unless x.nil?
+			true
+		end
+
+		def _dec(args, face_robot)
+			x = eval_var(args[0])
+			@ram[x] = @ram[x] - 1 unless x.nil?
 			true
 		end
 	end

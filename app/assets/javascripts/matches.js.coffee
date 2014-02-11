@@ -4,7 +4,7 @@
 
 ready.push ->
 	if $('#match_id').val()
-		buffer_size = 128
+		buffer_size = 1024
 		match_buffer = new Array
 		buffer_time = -1
 		now = -1
@@ -12,7 +12,7 @@ ready.push ->
 		fetching = false
 		playing = false
 		timer = null
-		interval = 20
+		interval = 5
 
 		show = (index) ->
 			for delta in match_buffer[index].delta
