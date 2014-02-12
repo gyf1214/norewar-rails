@@ -22,7 +22,7 @@ class MatchesController < ApplicationController
 		raise ClientException.new "Match not found!" if @match.nil?
 		raise ClientException.new "Match still judging!" unless @match.finished?
 		ret = @match.states.where(:time.gt => params[:after].to_i)
-		.where(:time.lte => params[:before].to_i).all
+		.where(:time.lte => params[:before].to_i).sort(:time).all
 		respond_to do |format|
 			format.html do
 				render json: ret

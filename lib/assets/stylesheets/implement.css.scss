@@ -54,6 +54,11 @@ a {
 		color: $btn-hover;
 		text-decoration: none;
 	}
+	&.btn-small {
+		width: $btn-small-width;
+		display: inline-block;
+		text-align: center;
+	}
 }
 
 .btn-line {

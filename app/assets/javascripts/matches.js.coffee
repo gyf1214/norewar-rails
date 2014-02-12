@@ -12,7 +12,7 @@ ready.push ->
 		fetching = false
 		playing = false
 		timer = null
-		interval = 5
+		interval = 50
 
 		show = (index) ->
 			for delta in match_buffer[index].delta
@@ -44,6 +44,14 @@ ready.push ->
 			if match_buffer[index + 1]? && match_buffer[index + 1].time <= now
 				++index
 
+		speed = (delta) ->
+			return if interval + delta <= 0
+			interval += delta
+			$('#speed_span').html "#{Math.floor(100000 / interval) / 100}"
+			return unless playing
+			clearInterval timer
+			timer = setInterval next, interval
+
 		fetch()
 
 		$('#play_btn').click ->
@@ -55,3 +63,9 @@ ready.push ->
 			return unless playing
 			playing = false
 			clearInterval timer
+
+		$('#fast_btn').click ->
+			speed -5
+
+		$('#slow_btn').click ->
+			speed 5
