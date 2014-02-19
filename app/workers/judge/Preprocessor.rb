@@ -35,6 +35,11 @@ module Judge
 			script.each_line do |line|
 				line(line)
 			end
+			unless @segement.nil?
+				for i in (@segement.offset)..(@segement.end - 1)
+					@code[i].args[0] = @labels[@code[i].args[0]] if @code[i].cmd == "jump"
+				end
+			end
 		end
 	end
 end
