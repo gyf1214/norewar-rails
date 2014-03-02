@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require ready
 //= require_tree .
-//= require websocket_rails/main
 //= require jquery.autosize.min

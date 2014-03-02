@@ -55,7 +55,7 @@ gem 'sidekiq'
 #something judge uses
 gem 'json'
 gem 'algorithms'
-gem 'curb'
+#gem 'curb'
 
-#websocket
-gem 'websocket-rails'
+#delete websocket
+#gem 'websocket-rails'

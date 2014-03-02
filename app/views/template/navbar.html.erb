@@ -12,7 +12,6 @@
 			<%= @user.name unless @user.nil? %>!</span>
 			<%= link_to 'Logout', logout_users_path, class: 'btn' %>
 		</span>
-		<span id='secret' class='hide'><%= if @user.nil? then 'off' else 'on' end %></span>
 	</div>
 
 	<div class='login'>

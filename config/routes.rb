@@ -55,12 +55,6 @@ NorewarRails::Application.routes.draw do
   #   end
   root 'welcome#index'
   get 'error' => 'welcome#error'
-  #get 'test' => 'welcome#test'
-  #get 'clear' => 'welcome#clear'
-
-  constraints ip: /127.0.0.1/ do
-    post 'event' => 'jobs#event'
-  end
 
   resources :users do
     collection do

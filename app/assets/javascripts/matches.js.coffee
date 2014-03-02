@@ -51,7 +51,8 @@ ready.push ->
 		clearInterval timer
 		timer = setInterval next, interval
 
-	fetch()
+	if $('#match_id').val()?
+		fetch()
 
 	$('#play_btn').click ->
 		return if playing
