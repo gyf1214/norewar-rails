@@ -97,7 +97,7 @@ module Judge
 				break if cnt <= 1
 			end
 			@output.finish win
-			win
+			if next_time <= Global::Timeout then win else -win end
 		end
 
 		def print

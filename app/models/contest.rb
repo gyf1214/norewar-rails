@@ -15,11 +15,13 @@ class Contest
 	include MongoMapper::Document
 
 	key :name, String
+	key :description, String
 	many :competitors
 	key :status, Integer
 	key :round, Integer
 	key :job_ids, Array
 	many :jobs, in: :job_ids
+	key :owner_id, ObjectId
 	timestamps!
 
 	STATUS_MSG = [
@@ -66,5 +68,9 @@ class Contest
 		false
 	end
 
-	attr_accessible :name, :scores, :status, :competitors, :round
+	def admin?(user)
+		user._id == owner_id
+	end
+
+	attr_accessible :name, :scores, :status, :competitors, :round, :owner_id
 end

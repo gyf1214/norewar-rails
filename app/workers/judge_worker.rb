@@ -14,8 +14,8 @@ class JudgeWorker
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
 		unless winner == 0 || contest.nil?
 			for competitor in contest.competitors
-				unless competitor.user.codes.find(match.codes[winner - 1]._id).nil?
-					competitor.score = competitor.score + 1
+				unless competitor.user.codes.find(match.codes[winner.abs - 1]._id).nil?
+					competitor.score = competitor.score + if winner > 0 then 10 else 1 end
 				end
 			end
 			contest.save
