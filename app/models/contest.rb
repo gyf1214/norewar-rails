@@ -50,13 +50,26 @@ class Contest
 			random = SecureRandom.hex 8
 			com1 = competitors[2 * i].user
 			com2 = competitors[2 * i + 1].user
-			match_name = "#{name}-#{round}-#{com1.name}-vs-#{com2.name}-#{random}"
-			match = Match.create name: match_name
-			match.codes.push com1.default unless com1.default.nil?
-			match.codes.push com2.default unless com2.default.nil?
-			match.save
-			jid = JudgeWorker.perform_in(3.seconds, match._id, _id)
-			Job.create jid: jid, users: [com1._id, com2._id]
+			if com1.default.nil? || com2.default.nil?
+				if com1.default.nil?
+					competitors[2 * i].score -= 10
+				else
+					competitors[2 * i].score += 1
+				end
+				if com2.default.nil?
+					competitors[2 * i + 1].score -= 10
+				else
+					competitors[2 * i + 1].score += 1
+				end
+			else
+				match_name = "#{name}-#{round}-#{com1.name}-vs-#{com2.name}-#{random}"
+				match = Match.create name: match_name
+				match.codes.push com1.default
+				match.codes.push com2.default
+				match.save
+				jid = JudgeWorker.perform_in(3.seconds, match._id, _id)
+				Job.create jid: jid, users: [com1._id, com2._id]
+			end
 		end
 		save
 	end
