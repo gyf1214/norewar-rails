@@ -81,9 +81,13 @@ class Contest
 		false
 	end
 
+	def owner
+		User.find owner_id
+	end
+
 	def admin?(user)
 		user._id == owner_id
 	end
 
-	attr_accessible :name, :scores, :status, :competitors, :round, :owner_id
+	attr_accessible :name, :scores, :status, :competitors, :round, :owner_id, :description
 end
