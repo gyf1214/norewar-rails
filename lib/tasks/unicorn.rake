@@ -1,7 +1,7 @@
 namespace :unicorn do
 	desc 'Start unicorn server'
 	task :start do
-		sh 'bundle exec unicorn -D -c config/unicorn.rb -E development'
+		sh "bundle exec unicorn -D -c config/unicorn.rb -E production"
 	end
 	desc 'Stop unicorn server'
 	task :stop do
