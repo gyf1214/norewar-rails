@@ -15,9 +15,7 @@ class CodesController < ApplicationController
 	end
 
 	def show
-		require_params params, false, :id
-		@code = @user.codes.find params[:id]
-		raise ClientException.new "Code not found!" if @code.nil?
+		require_code
 	end
 
 	def index
@@ -25,23 +23,22 @@ class CodesController < ApplicationController
 	end
 
 	def destroy
-		require_params params, false, :id
-		@user.codes.destroy params[:id]
+		require_code
+		@code.destroy
+
 		redirect_to codes_path
 	end
 
 	def edit
-		require_params params, false, :id
-		@code = @user.codes.find params[:id]
-		raise ClientException.new "Code not found!" if @code.nil?
+		require_code
 	end
 
 	def update
-		require_params params, false, :id, :code
+		require_params params, false, :code
 		require_params params[:code], false, :name
 		require_params params[:code], true, :code
-		@code = @user.codes.find params[:id]
-		raise ClientException.new "Code not found!" if @code.nil?
+		require_code
+
 		@code.name = params[:code][:name]
 		@code.code = params[:code][:code]
 		@code.save
@@ -57,17 +54,25 @@ class CodesController < ApplicationController
 		require_params params, false, :code
 		require_params params[:code], false, :name
 		require_params params[:code], true, :file
+
 		file = params[:code][:file].read
 		code = @user.codes.create name: params[:code][:name], code: file
 		redirect_to code
 	end
 
 	def default
-		require_params params, false, :id
-		@code = @user.codes.find params[:id]
-		raise ClientException.new "Code not found!" if @code.nil?
+		require_code
+
 		@user.set default_id: params[:id]
 		@code.save
 		redirect_to @code
+	end
+
+	private
+
+	def require_code
+		require_params params, false, :id
+		@code = @user.codes.find params[:id]
+		raise ClientException.new "Code not found!" if @code.nil?
 	end
 end
