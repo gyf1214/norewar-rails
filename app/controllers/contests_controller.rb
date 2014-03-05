@@ -44,7 +44,7 @@ class ContestsController < ApplicationController
 		require_contest true, 1
 
 		@contest.next_round
-		redirect_to contests_path
+		redirect_to @contest
 	end
 
 	def destroy

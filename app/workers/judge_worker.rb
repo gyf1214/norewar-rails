@@ -10,15 +10,20 @@ class JudgeWorker
 		winner = @match.run
 		Judge::Log::puts "Match #{match.name} finished"
 		job = Job.find_by_jid jid
-		job.destroy unless job.nil?
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
-		unless winner == 0 || contest.nil?
-			for competitor in contest.competitors
-				unless competitor.user.codes.find(match.codes[winner.abs - 1]._id).nil?
-					competitor.score = competitor.score + if winner > 0 then 10 else 1 end
+		unless contest.nil?
+			puts contest.jobs
+			contest.jobs.delete job
+			contest.status = 1 if contest.jobs.empty?
+			unless winner == 0
+				for competitor in contest.competitors
+					unless competitor.user.codes.find(match.codes[winner.abs - 1]._id).nil?
+						competitor.score = competitor.score + if winner > 0 then 10 else 1 end
+					end
 				end
 			end
 			contest.save
 		end
+		job.destroy unless job.nil?
 	end
 end

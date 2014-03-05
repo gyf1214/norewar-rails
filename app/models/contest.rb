@@ -62,13 +62,17 @@ class Contest
 					competitors[2 * i + 1].score += 1
 				end
 			else
+				self.status = 2
+				puts self.status
 				match_name = "#{name}-#{round}-#{com1.name}-vs-#{com2.name}-#{random}"
 				match = Match.create name: match_name
 				match.codes.push com1.default
 				match.codes.push com2.default
 				match.save
-				jid = JudgeWorker.perform_in(3.seconds, match._id, _id)
-				Job.create jid: jid, users: [com1._id, com2._id]
+				jid = JudgeWorker.perform_in(1.seconds, match._id, _id)
+				job = Job.create jid: jid, users: [com1._id, com2._id]
+				puts job
+				jobs.push job
 			end
 		end
 		save
@@ -89,5 +93,5 @@ class Contest
 		user._id == owner_id
 	end
 
-	attr_accessible :name, :scores, :status, :competitors, :round, :owner_id, :description
+	attr_accessible :name, :scores, :status, :competitors, :round, :owner_id, :description, :jobs
 end

@@ -28,7 +28,7 @@
 	<% if @contest.status == 0 %>
 		Open For Competitors
 	<% elsif @contest.status == 1 %>
-		Waiting For Round: <%= @contest.round %>
+		Waiting For Round: <%= @contest.round - 1 %>
 	<% elsif @contest.status == 2 %>
 		Judging Round: <%= @contest.round %>
 	<% else %>
