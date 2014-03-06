@@ -9,4 +9,7 @@ namespace :unicorn do
 		sh "kill -9 #{pid}"
 		sh 'rm tmp/pids/unicorn.pid'
 	end
+
+	desc 'Restart unicorn server'
+	task :restart => [:stop, :start]
 end

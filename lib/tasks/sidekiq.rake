@@ -9,4 +9,6 @@ namespace :sidekiq do
 		sh "kill #{pid}"
 		sh 'rm tmp/pids/sidekiq.pid'
 	end
+
+	task :restart => [:stop, :start]
 end
