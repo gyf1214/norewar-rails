@@ -33,6 +33,8 @@ ready.push ->
 				match_buffer = match_buffer.concat res
 				buffer_time += buffer_size
 				fetching = false
+			error: ->
+				fetching = false
 
 	next = ->
 		if now <= buffer_time
