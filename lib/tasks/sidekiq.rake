@@ -1,7 +1,7 @@
 namespace :sidekiq do
 	desc 'Start sidekiq server'
 	task :start do
-		sh 'bundle exec sidekiq -d -L log/sidekiq.log -P tmp/pids/sidekiq.pid'
+		sh 'bundle exec sidekiq -d -L log/sidekiq.log -P tmp/pids/sidekiq.pid -e production'
 	end
 	desc 'Stop sidekiq server'
 	task :stop do
