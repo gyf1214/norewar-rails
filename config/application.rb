@@ -27,5 +27,6 @@ module NorewarRails
     config.generators do |g|
         g.orm :mongo_mapper
     end
+    config.middleware.use Rack::Deflater
   end
 end
