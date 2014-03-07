@@ -12,7 +12,6 @@ class JudgeWorker
 		job = Job.find_by_jid jid
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
 		unless contest.nil?
-			puts contest.jobs
 			contest.jobs.delete job
 			contest.status = 1 if contest.jobs.empty?
 			unless winner == 0
