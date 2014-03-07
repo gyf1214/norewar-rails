@@ -23,6 +23,7 @@ ready.push ->
 				name:		$('#username_txt').val()
 				password:	$('#password_txt').val()
 			dataType: 'json'
+			timeout: 10000
 			success: (res) ->
 				show_welcome name if res.success
 
@@ -41,5 +42,6 @@ ready.push ->
 				name:		$('#username_txt').val()
 				password:	$('#password_txt').val()
 			dataType: 'json'
+			timeout: 10000
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success

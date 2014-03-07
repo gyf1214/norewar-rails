@@ -29,6 +29,7 @@ ready.push ->
 				after: buffer_time
 				before: buffer_time + buffer_size
 			dataType: 'json'
+			timeout: 10000
 			success: (res) ->
 				match_buffer = match_buffer.concat res
 				buffer_time += buffer_size
