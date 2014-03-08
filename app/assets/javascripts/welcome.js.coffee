@@ -30,9 +30,9 @@ ready.push ->
 	$('#log_btn').click ->
 		login()
 
-	$('#login_form').submit (e) ->
-		e.preventDefault()
-		login()
+	$('#login_form').keypress (e) ->
+		if (e.keyCode == 13)
+			login()
 
 	$('#reg_btn').click ->
 		$.ajax
