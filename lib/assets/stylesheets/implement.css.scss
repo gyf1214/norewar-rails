@@ -327,3 +327,23 @@ h1 .btn {
 		padding: $table-padding
 	}
 }
+
+.contest {
+	.contest-table {
+		width: $contest-table-width;
+	}
+
+	.contest-detail {
+		margin-left: ($contest-detail-left + $contest-table-width);
+
+		h1, h2, h3 {
+			margin: $contest-title-margin;	
+		}
+	}
+}
+
+.content {
+	h1 {
+		margin-bottom: $title-bottom;
+	}
+}

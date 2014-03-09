@@ -13,41 +13,42 @@
 		<%= link_to 'Delete', @contest, method: :delete, class: 'btn btn-alert pull-right' %>
 	<% end %>
 </h1>
+<div class='contest container'>
+	<table class='table contest-table pull-left'>
+		<tr>
+			<th>Rank</th>
+			<th>Competitor</th>
+			<th>Score</th>
+		</tr>
+		<% @contest.rank.each_with_index do |competitor, i| %>
+		<tr>
+			<td><%= i %></td>
+			<td><%= competitor.user.name %></td>
+			<td><%= competitor.score %></td>
+		</tr>
+		<% end %>
+	</table>
+	<div class='contest-detail'>
+		<h2>Description</h2>
+		<% unless @contest.description.nil? || @contest.description.empty? %>
+			<% @contest.description.each_line do |line| %>
+				<p><%= line %></p>
+			<% end%>
+		<% else %>
+			<p>None</p>
+		<% end %>
 
-<div class='pull-left'>
-	<h2>Description</h2>
-	<% unless @contest.description.nil? || @contest.description.empty? %>
-		<% @contest.description.each_line do |line| %>
-			<p><%= line %></p>
-		<% end%>
-	<% else %>
-		<p>None</p>
-	<% end %>
-
-	<h3>
-	<% if @contest.status == 0 %>
-		Open For Competitors
-	<% elsif @contest.status == 1 %>
-		Waiting For Round: <%= @contest.round - 1 %>
-	<% elsif @contest.status == 2 %>
-		Judging Round: <%= @contest.round %>
-	<% else %>
-		Ended
-	<% end %>
-	</h3>
-
-	<h3>Owner: <%= @contest.owner.name %></h3>
+		<h3>
+		<% if @contest.status == 0 %>
+			Open For Competitors
+		<% elsif @contest.status == 1 %>
+			Waiting For Round: <%= @contest.round - 1 %>
+		<% elsif @contest.status == 2 %>
+			Judging Round: <%= @contest.round %>
+		<% else %>
+			Ended
+		<% end %>
+		</h3>
+		<h3>Owner: <%= @contest.owner.name %></h3>
+	</div>
 </div>
-
-<table class='table pull-right'>
-	<tr>
-		<th>Competitor</th>
-		<th>Score</th>
-	</tr>
-	<% @contest.rank.each do |competitor| %>
-	<tr>
-		<td><%= competitor.user.name %></td>
-		<td><%= competitor.score %></td>
-	</tr>
-	<% end %>
-</table>

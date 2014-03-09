@@ -74,7 +74,7 @@ $viewer-padding:		0px 8px 0px 8px;
 }
 
 //code
-$code-width:			890px;
+$code-width:			980px;
 $code-border:			1px solid darken($white, 10%);
 $code-margin:			5px 0px 0px;
 $code-bar-height:		35px;
@@ -109,3 +109,11 @@ $table-header-color:	$textcolor;
 $table-back:			$background;
 $table-color:			$textcolor;
 $table-padding:			10px 5px;
+
+//contest
+$contest-table-width:	250px;
+$contest-detail-left:	20px;
+$contest-title-margin:	20px 0px;
+
+//title
+$title-bottom:			10px;
