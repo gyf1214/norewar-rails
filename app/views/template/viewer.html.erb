@@ -5,7 +5,7 @@
 			<% 16.times do |i| %>
 				<tr>
 					<% 16.times do |j| %>
-						<td id='map_<%= i %>_<%= j %>' class='team0'></td>
+						<td id='map_<%= i %>_<%= j %>' class='team0' team='0'></td>
 					<% end %>
 				</tr>
 			<% end %>
@@ -13,10 +13,12 @@
 	</table>
 	<div class='viewer-bar pull-left'>
 		<% @match.codes.each_with_index do |code, i| %>
-			<h3 class="team<%= i %>">
+			<h3 class='team<%= i %>'>
 				<span><%= code.user.name %></span>
 				/
 				<span><%= code.name %></span>
+				*
+				<span id='cnt_<%= i+1 %>'>0</span>
 			</h3>
 		<% end %>
 		<div class='btn-line'>

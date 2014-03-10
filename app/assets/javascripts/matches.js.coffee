@@ -12,13 +12,23 @@ ready.push ->
 	playing = false
 	timer = null
 	interval = 50
+	count = new Array
 
 	show = (index) ->
 		for delta in match_buffer[index].delta
 			node = $("#map_#{delta.x}_#{delta.y}")
 			if delta.delta?
+				team = node.attr("team")
+				count[team] = 0 unless count[team]?
+				count[team]--
+				$("#cnt_#{team}").text(count[team])
+				node.attr("team", delta.delta)
 				node.removeClass()
-				node.addClass("team#{delta.delta}") unless delta.delta is 0
+				team = delta.delta
+				count[team] = 0 unless count[team]?
+				count[team]++
+				$("#cnt_#{team}").text(count[team])
+				node.addClass("team#{team}") unless team is 0
 
 	fetch = ->
 		fetching = true
