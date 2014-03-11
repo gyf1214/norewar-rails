@@ -42,7 +42,6 @@ class Contest
 	end
 
 	def next_round
-		return if self.round <= 0
 		self.round = self.round - 1
 		competitors = rank
 		count = competitors.size / 2
@@ -63,7 +62,6 @@ class Contest
 				end
 			else
 				self.status = 2
-				puts self.status
 				match_name = "#{name}-#{round}-#{com1.name}-vs-#{com2.name}-#{random}"
 				match = Match.create name: match_name
 				match.codes.push com1.default
@@ -71,9 +69,11 @@ class Contest
 				match.save
 				jid = JudgeWorker.perform_in(1.seconds, match._id, _id)
 				job = Job.create jid: jid, users: [com1._id, com2._id]
-				puts job
 				jobs.push job
 			end
+		end
+		if self.status != 2
+			self.status = if self.round > 0 then 1 else 3 end
 		end
 		save
 	end

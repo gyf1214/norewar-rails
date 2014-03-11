@@ -13,7 +13,9 @@ class JudgeWorker
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
 		unless contest.nil?
 			contest.jobs.delete job
-			contest.status = 1 if contest.jobs.empty?
+			if contest.jobs.empty?
+				contest.status = if contest.round > 0 then 1 else 3 end
+			end
 			unless winner == 0
 				for competitor in contest.competitors
 					unless competitor.user.codes.find(match.codes[winner.abs - 1]._id).nil?
