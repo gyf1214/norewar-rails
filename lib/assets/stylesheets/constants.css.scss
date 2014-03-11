@@ -71,6 +71,7 @@ $viewer-padding:		0px 8px 0px 8px;
 //team
 @mixin team ($id) {
 	background-color: hsl($id * 60, 100%, 50%);
+	color: $black;
 }
 
 //code
@@ -117,3 +118,6 @@ $contest-title-margin:	20px 0px;
 
 //title
 $title-bottom:			10px;
+
+//input
+$checkbox-margin:		0px 5px 0px 0px;

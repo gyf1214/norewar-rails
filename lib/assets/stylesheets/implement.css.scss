@@ -161,6 +161,10 @@ input {
 			margin: 0px;
 		}
 	}
+	&[type='checkbox'] {
+		display: inline;
+		margin: $checkbox-margin;
+	}
 }
 
 @mixin fix-width($width) {
@@ -183,6 +187,8 @@ input {
 			padding: 0px;
 			width: $viewer-size;
 			height: $viewer-size;
+			text-align: center;
+			vertical-align: middle;
 
 			&[class*=team] {
 				border-radius: $viewer-radius;

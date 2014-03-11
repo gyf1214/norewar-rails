@@ -13,10 +13,12 @@ ready.push ->
 	timer = null
 	interval = 50
 	count = new Array
+	face = ['>', '^', '<', 'v']
 
 	show = (index) ->
 		for delta in match_buffer[index].delta
 			node = $("#map_#{delta.x}_#{delta.y}")
+			direction = $("#direction_#{delta.x}_#{delta.y}")
 			if delta.delta?
 				team = node.attr("team")
 				count[team] = 0 unless count[team]?
@@ -29,6 +31,9 @@ ready.push ->
 				count[team]++
 				$("#cnt_#{team}").text(count[team])
 				node.addClass("team#{team}") unless team is 0
+				direction.text('') if team is 0
+			if delta.face?
+				direction.text(face[delta.face])
 
 	fetch = ->
 		fetching = true
@@ -82,3 +87,10 @@ ready.push ->
 
 	$('#slow_btn').click ->
 		speed 5
+
+	$('#direction_chk').click ->
+		unless $('#direction_chk')[0].checked is true
+			$('.viewer-direction').addClass('hide')
+		else
+			$('.viewer-direction').removeClass('hide')
+

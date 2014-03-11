@@ -5,7 +5,9 @@
 			<% 16.times do |i| %>
 				<tr>
 					<% 16.times do |j| %>
-						<td id='map_<%= i %>_<%= j %>' class='team0' team='0'></td>
+						<td id='map_<%= i %>_<%= j %>' class='team0' team='0'>
+							<span id="direction_<%= i %>_<%= j %>" class='hide viewer-direction'></span>
+						</td>
 					<% end %>
 				</tr>
 			<% end %>
@@ -28,6 +30,9 @@
 		<div class='btn-line'>
 			<a href='##' id='slow_btn' class='btn btn-small'>Slower</a>
 			<a href='##' id='fast_btn' class='btn btn-small'>Faster</a>
+		</div>
+		<div class='btn-line'>
+			<input id='direction_chk' type='checkbox'/><span>Direction</span>
 		</div>
 		FPS:
 		<span id='speed_span'>20</span>
