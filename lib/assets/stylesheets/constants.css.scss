@@ -71,7 +71,7 @@ $viewer-padding:		0px 8px 0px 8px;
 //team
 @mixin team ($id) {
 	background-color: hsl($id * 60, 100%, 50%);
-	color: $black;
+	color: hsl($id * 60 + 180, 100%, 50%);
 }
 
 //code
