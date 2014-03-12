@@ -10,13 +10,12 @@ module Judge
 
 		include Interpreter
 
-		def initialize(x, y, face, team, power = false, level = Global::Creature, bois = Bios.new, code = Code.new)
+		def initialize(x, y, face, team, power = false, level = Global::Creature, code = Code.new)
 			@x = x
 			@y = y
 			@face = face
 			@team = team
 			@level = level
-			@bios = bois
 			@code = code
 			@power = power
 			@ram = Array.new(Global::RamSize, 0)
@@ -31,13 +30,12 @@ module Judge
 		end
 
 		def init
-			@segement = @bios.find_segement("main")
-			@seek = @segement.offset
+			@seek = 0
 			@delay += Global::Delay(@code[@seek])
 		end
 
-		def copy(x, y, face, level, power = false)
-			Robot.new(x, y, face, @team, power, level, @bios, Code.new)
+		def copy(x, y, level, power = false)
+			Robot.new(x, y, @face, @team, power, level, Code.new)
 		end
 
 		def face_location
@@ -53,10 +51,8 @@ module Judge
 			ret
 		end
 
-		def replace(codes, segement)
-			unless @bios.segements[segement].nil?
-				@code.replace(codes, @bios.segements[segement].offset)
-			end
+		def replace(codes, offset)
+			@code.replace(codes, offset)
 		end
 
 		def bind(output)

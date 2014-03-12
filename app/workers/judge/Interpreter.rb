@@ -1,17 +1,25 @@
 module Judge
 	module Interpreter
 		def eval(name)
+			name = name.clone
 			name.strip!
+			name.slice!(0) if name =~ /^\~/
 			return @ram[name.delete("$").to_i] if name =~ /^\$/
-			return @bios.constants[name.delete("!")].to_i if name =~ /^\!/
 			name.to_i
 		end
 
 		def eval_var(name)
+			name = name.clone
 			return nil unless name =~ /^\$/
 			x = name[1..-1].to_i
 			return nil if @ram[x].nil?
 			x
+		end
+
+		def eval_label(name)
+			name = name.clone
+			ans = eval(name)
+			if name =~ /^\~/ then ans else ans + @seek end
 		end
 
 		def run(command, face_robot)
@@ -46,16 +54,16 @@ module Judge
 		end
 
 		def _jump(args, face_robot)
-			@seek = @segement.offset + args[0].to_i - 1
+			@seek = eval_label(args[0]) - 1
 			true
 		end
 
 		def _trans(args, face_robot)
 			unless face_robot.nil? || face_robot.power
-				seg = @bios.find_segement(args[0])
-				return if seg.nil?
-				x = eval(args[1])
-				face_robot.replace(@code[seg.offset..(seg.end - 1)], x)
+				x = eval_label(args[0])
+				y = eval_label(args[1])
+				z = eval_label(args[2])
+				face_robot.replace(@code.slice(x, y), z)
 			end
 			true
 		end
@@ -63,7 +71,7 @@ module Judge
 		def _create(args, face_robot)
 			if face_robot.nil?
 				level = eval(args[0])
-				face_robot = copy(0, 0, rand(4), level)
+				face_robot = copy(0, 0, level)
 			else
 				true
 			end
@@ -77,9 +85,8 @@ module Judge
 		end
 
 		def _scan(args, face_robot)
-			return true unless args[0] =~ /^\$/
-			x = args[0][1..-1].to_i
-			return true if @ram[x].nil?
+			x = eval_var(args[0])
+			return if x.nil?
 			if face_robot.nil?
 				@ram[x] = 0
 			else

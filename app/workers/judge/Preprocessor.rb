@@ -1,44 +1,52 @@
 module Judge
 	module Preprocessor
-		def line(line)
-			line.chomp!
-			line.strip!
-			unless line == "" || line =~ /^\#/
-				if line =~ /^\:/
-					line.slice!(0)
-					strs = line.split(" ");
-					@bios.constants[strs[0]] = strs[1]
-				elsif line =~ /^\@/
-					line.slice!(0)
-					@labels[line] = @offset - @segement.offset
-				elsif line =~ /^\./
-					line.slice!(0)
-					strs = line.split(" ");
-					unless @segement.nil?
-						for i in (@segement.offset)..(@segement.end - 1)
-							@code[i].args[0] = @labels[@code[i].args[0]] if @code[i].cmd == "jump"
-						end
-					end
-					@segement = Segement.new(strs[0], @offset)
-					@labels = {}
-					@bios.segements.push(@segement)
-				else
-					@segement.end += 1
-					@code.push(Command.new(line))
-					@offset += 1
-				end
+		def pre(line)
+			if line =~ /^\#/
+				@lines.delete line
+			elsif line =~ /^\:/
+				strs = line.split(' ')
+				@constants[strs[0]] = strs[1]
+				@lines.delete line
+			elsif line =~ /^\@/
+				@labels[line] = @lines.index line
+				@lines.delete line
 			end
 		end
 
-		def process(script)
-			@offset = 0
-			script.each_line do |line|
-				line(line)
+		def trans(name, offset)
+			prefix = ''
+			if name =~ /^\~/
+				offset = 0
+				prefix = '~'
+				name.slice! 0
 			end
-			unless @segement.nil?
-				for i in (@segement.offset)..(@segement.end - 1)
-					@code[i].args[0] = @labels[@code[i].args[0]] if @code[i].cmd == "jump"
-				end
+			return prefix + @constants[name] if name =~ /^\:/
+			return prefix + (@labels[name] - offset).to_s if name =~ /^\@/
+			return prefix + name
+		end
+
+		def work(line, offset)
+			cmd = Command.new line
+			cmd.args.size.times do |i|
+				cmd.args[i] = trans cmd.args[i], offset
+			end
+			@code.push cmd
+		end
+
+		def process(script)
+			@labels = {}
+			@constants = {}
+			@lines = []
+
+			script.each_line do |line|
+				line = line.chomp.strip
+				@lines.push line unless line.empty?
+			end
+			@lines.clone.each do |line|
+				pre line
+			end
+			@lines.each_with_index do |line, index|
+				work line, index
 			end
 		end
 	end

@@ -1,12 +1,16 @@
 module Judge
 	class Command
-		attr_reader :cmd
-		attr_reader :args
+		attr_accessor :cmd
+		attr_accessor :args
 
 		def initialize(str)
 			strs = str.strip.split(" ")
 			@cmd = strs[0]
 			@args = strs.slice(1, strs.size - 1)
+		end
+
+		def to_s
+			@cmd + ' ' + @args.join(' ')
 		end
 	end
 
