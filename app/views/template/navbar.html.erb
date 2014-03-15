@@ -20,7 +20,11 @@
 				Enter your credentials:
 				<input type='text' id='username_txt' class='text-long'/>
 				<input type='password' id='password_txt' class='text-long'/>
-				<%= recaptcha_tags %>
+				<div id='recaptcha_widget'>
+					<div id='recaptcha_image'></div>
+					<input type='text' id='recaptcha_response_field' />
+				</div>
+				<%= recaptcha_tags display: {:theme => 'custom'} %>
 				<div class='btn-line'>
 					<a id='reg_btn' class='pull-right btn' href='##'>Sign up</a>
 					<a id='log_btn' class='pull-right btn' href='##'>Sign in</a>

@@ -45,3 +45,6 @@ ready.push ->
 			timeout: 10000
 			success: (res) ->
 				show_welcome $('#username_txt').val() if res.success
+
+	$('#recaptcha_image').click ->
+		Recaptcha.reload()

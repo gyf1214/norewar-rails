@@ -353,3 +353,11 @@ h1 .btn {
 		margin-bottom: $title-bottom;
 	}
 }
+
+#recaptcha_image {
+	width: $recaptcha-width !important;
+	img {
+		width: $recaptcha-width !important;
+		cursor: pointer;
+	}
+}
