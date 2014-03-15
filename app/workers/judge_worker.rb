@@ -5,9 +5,15 @@ class JudgeWorker
 	def perform(id, contest_id = nil)
 		match = Match.find id
 		return if match.nil?
-		@match = Judge::Match.new match
-		Judge::Log::puts "Match #{match.name} start!"
-		winner = @match.run
+		begin
+			@match = Judge::Match.new match
+			Judge::Log::puts "Match #{match.name} start!"
+			winner = @match.run
+		rescue Exception => e
+			Judge::Log::puts "Exception: #{e.message} while running: #{match.name}"
+			winner = 0
+			match.destroy
+		end
 		Judge::Log::puts "Match #{match.name} finished"
 		job = Job.find_by_jid jid
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
