@@ -38,28 +38,20 @@ module Judge
 		MapSize		= 16
 		Timeout		= 65536
 
-		def self.Delay(cmd)
-			map = {
-				"move"		=> 10,
-				"jump"		=> 1,
-				"turn"		=> 5,
-				"die"		=> 100,
-				"nop"		=> 100,
-				"create"	=> 20,
-				"trans"		=> 40,
-				"scan"		=> 20,
-				"ecomp"		=> 2,
-				"say"		=> 1,
-				"power"		=> 10,
-				"set"		=> 1,
-				"inc"		=> 1,
-				"dec"		=> 1,
-			}
-			return map["nop"] if cmd.nil?
-			ret = if map[cmd.cmd].nil? then 0 else map[cmd.cmd] end
-			ret += cmd.args[0].to_i * cmd.args[0].to_i * 10 if cmd.cmd == "create"
-			ret
-		end
+		Delay		= {
+			"move"		=> 10,
+			"jump"		=> 1,
+			"turn"		=> 5,
+			"die"		=> 100,
+			"nop"		=> 100,
+			"scan"		=> 20,
+			"ecomp"		=> 2,
+			"say"		=> 1,
+			"power"		=> 10,
+			"set"		=> 1,
+			"inc"		=> 1,
+			"dec"		=> 1,
+		}
 
 		Permission = {
 			"move"		=> [true, true, true, true],

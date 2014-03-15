@@ -31,7 +31,7 @@ module Judge
 
 		def init
 			@seek = 0
-			@delay += Global::Delay(@code[@seek])
+			@delay += eval_delay @code[@seek]
 		end
 
 		def copy(x, y, level, power = false)
@@ -47,7 +47,7 @@ module Judge
 			cmd = Command.new("die") if cmd.nil?
 			ret = run(cmd, face_robot)
 			@seek += 1
-			@delay += Global::Delay(@code[@seek])
+			@delay += eval_delay @code[@seek]
 			ret
 		end
 

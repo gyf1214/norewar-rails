@@ -22,6 +22,20 @@ module Judge
 			if name =~ /^\~/ then ans else ans + @seek end
 		end
 
+		def eval_delay(cmd)
+			return Global::Delay['nop'] if cmd.nil?
+			if cmd.cmd == 'create'
+				x = eval(cmd.args[0])
+				x * x * 10 + 20
+			elsif cmd.cmd == 'trans'
+				x = eval_label(cmd.args[0])
+				y = eval_label(cmd.args[1])
+				10 * (Math.log(y - x, 2).ceil + 1)
+			else
+				Global::Delay[cmd.cmd]
+			end
+		end
+
 		def run(command, face_robot)
 			return true unless Global::Permission[command.cmd][@level]
 			self.send("_" + command.cmd, command.args, face_robot)
@@ -63,7 +77,7 @@ module Judge
 				x = eval_label(args[0])
 				y = eval_label(args[1])
 				z = eval_label(args[2])
-				face_robot.replace(@code.slice(x, y), z)
+				face_robot.replace(@code[x..(y - 1)], z)
 			end
 			true
 		end
