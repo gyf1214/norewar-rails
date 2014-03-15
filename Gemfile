@@ -59,3 +59,6 @@ gem 'algorithms'
 
 #delete websocket
 #gem 'websocket-rails'
+
+#captcha
+gem "recaptcha", :require => "recaptcha/rails"
