@@ -14,11 +14,11 @@
 		</tbody>
 	</table>
 	<div class='viewer-bar pull-left'>
-		<% @match.codes.each_with_index do |code, i| %>
+		<% @codes.each_with_index do |code, i| %>
 			<h3 class='team<%= i %>'>
-				<span><%= code.user.name %></span>
+				<span><%= code[:user] %></span>
 				/
-				<span><%= code.name %></span>
+				<span><%= code[:name] %></span>
 				*
 				<span id='cnt_<%= i+1 %>'>0</span>
 			</h3>
