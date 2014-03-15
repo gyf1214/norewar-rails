@@ -13,16 +13,15 @@
 		<th>Finished At</th>
 	</tr>
 	<% @matches.each do |index, match| %>
-		<% status = if match.finished? then 'Finished' else 'Judging...' end %>
 		<tr>
 			<td>
-				<% if match.finished? %>
+				<% if match.status == 1 %>
 					<%= link_to match.name, match %>
 				<% else %>
 					<%= match.name %>
 				<% end %>
 			</td>
-			<td><%= status %></td>
+			<td><%= match.status_msg %></td>
 			<td><%= match.created_at %></td>
 			<td><%= if match.finished? then match.updated_at else '-' end %></td>
 		</tr>

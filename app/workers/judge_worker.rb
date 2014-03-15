@@ -12,9 +12,11 @@ class JudgeWorker
 		rescue Exception => e
 			Judge::Log::puts "Exception: #{e.message} while running: #{match.name}"
 			winner = 0
-			match.destroy
+			match.status = 2
 		end
 		Judge::Log::puts "Match #{match.name} finished"
+		match.status = 1 if match.status == 0
+		match.save
 		job = Job.find_by_jid jid
 		contest = if contest_id.nil? then nil else Contest.find contest_id end
 		unless contest.nil?

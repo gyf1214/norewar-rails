@@ -4,11 +4,24 @@ class Match
 	key :name, String
 	key :code_ids, Array
 	many :codes, in: :code_ids
+	key :user_ids, Array
+	many :users, in: :user_ids
+	key :status, Integer
 	key :winner, Integer
 	timestamps!
 
+	STATUS_MSG = [
+		'Judging',
+		'Finished',
+		'Error'
+	]
+
+	def status_msg
+		STATUS_MSG[status]
+	end
+
 	def finished?
-		!winner.nil?
+		status > 0
 	end
 
 	many :states do
@@ -29,5 +42,5 @@ class Match
 		end
 	end
 
-	attr_accessible :name, :codes, :states, :winner
+	attr_accessible :name, :codes, :states, :winner, :status
 end

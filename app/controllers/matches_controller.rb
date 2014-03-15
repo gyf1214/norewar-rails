@@ -3,10 +3,10 @@ class MatchesController < ApplicationController
 
 	def index
 		@matches = Hash.new
-		@user.codes.each do |code|
-			Match.where(code_ids: code._id).sort(:updated_at.desc).fields(:name, :winner, :created_at, :updated_at).all.each do |match|
-				@matches.store match._id, match
-			end
+		Match.where(user_ids: @user._id)
+			 .sort(:updated_at.desc)
+			 .fields(:name, :winner, :status, :created_at, :updated_at).all.each do |match|
+			@matches.store match._id, match
 		end
 	end
 

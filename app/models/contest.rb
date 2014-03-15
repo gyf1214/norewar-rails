@@ -63,8 +63,10 @@ class Contest
 			else
 				self.status = 2
 				match_name = "#{name}-#{round}-#{com1.name}-vs-#{com2.name}-#{random}"
-				match = Match.create name: match_name
+				match = Match.create name: match_name, status: 0
+				match.users.push com1
 				match.codes.push com1.default
+				match.users.push com2
 				match.codes.push com2.default
 				match.save
 				jid = JudgeWorker.perform_in(1.seconds, match._id, _id)
