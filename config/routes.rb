@@ -85,6 +85,7 @@ NorewarRails::Application.routes.draw do
       get 'join'
       get 'open'
       get 'test'
+      get 'recover'
     end
   end
 end

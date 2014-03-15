@@ -53,6 +53,14 @@ class ContestsController < ApplicationController
 		redirect_to contests_path
 	end
 
+	def recover
+		require_contest true
+		@contest.status = 1
+		@contest.jobs.destroy_all
+		@contest.save
+		redirect_to @contest
+	end
+
 	private
 
 	def require_contest(admin = false, status = nil)
