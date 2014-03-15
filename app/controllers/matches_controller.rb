@@ -16,8 +16,9 @@ class MatchesController < ApplicationController
 		raise ClientException.new "Match not found!" if @match.nil?
 		@codes = []
 		@match.users.each_with_index do |user, i|
-			code = if @match.codes[i].nil? then '[Deleted]' else @match.codes[i].name end
-			@codes.push user: user.name, name: code
+			code = Code.find @match.code_ids[i]
+			code_name = if code.nil? then '[Deleted]' else code.name end
+			@codes.push user: user.name, name: code_name
 		end
 	end
 
