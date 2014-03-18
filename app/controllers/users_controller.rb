@@ -30,7 +30,9 @@ class UsersController < ApplicationController
 	private
 
 	def captcha!
-		require_params params, false, :recaptcha_response_field
-		raise ClientException.new 'We cannot confirm you are a human!' unless verify_recaptcha
+		#require_params params, false, :recaptcha_response_field
+		#puts params[:recaptcha_response_field]
+		#puts verify_recaptcha
+		#raise ClientException.new 'We cannot confirm you are a human!' unless verify_recaptcha
 	end
 end
