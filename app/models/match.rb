@@ -42,5 +42,5 @@ class Match
 		end
 	end
 
-	attr_accessible :name, :codes, :states, :winner, :status, :code_ids
+	attr_accessible :name, :codes, :states, :winner, :status, :code_ids, :user_ids
 end
