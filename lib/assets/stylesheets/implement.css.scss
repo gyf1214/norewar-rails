@@ -356,6 +356,7 @@ h1 .btn {
 
 #recaptcha_image {
 	width: $recaptcha-width !important;
+	margin: $recaptcha-margin;
 	img {
 		width: $recaptcha-width !important;
 		cursor: pointer;

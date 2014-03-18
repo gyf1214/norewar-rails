@@ -20,8 +20,9 @@ ready.push ->
 			url: '/users/login'
 			type: 'POST'
 			data:
-				name:		$('#username_txt').val()
-				password:	$('#password_txt').val()
+				name:			$('#username_txt').val()
+				password:		$('#password_txt').val()
+				recaptcha_response_field: $('#recaptcha_response_field').val()
 			dataType: 'json'
 			timeout: 10000
 			success: (res) ->
@@ -41,6 +42,7 @@ ready.push ->
 			data:
 				name:		$('#username_txt').val()
 				password:	$('#password_txt').val()
+				recaptcha_response_field: $('#recaptcha_response_field').val()
 			dataType: 'json'
 			timeout: 10000
 			success: (res) ->
