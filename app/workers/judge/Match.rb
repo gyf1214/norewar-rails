@@ -10,14 +10,16 @@ module Judge
 			@lives = []
 			@output = Output.new match
 			@output.start
-			match.codes.each_with_index do |c, index|
+			match.code_ids.each_with_index do |c, index|
+				code = Code.find c
+				script = if code.nil? then "" else code.code end
 				x = rand(Global::MapSize)
 				y = rand(Global::MapSize)
 				face = rand(4)
 				@output.push(x, y, index + 1, face)
 				robot = Robot.new(x, y, face, index + 1, true)
 				robot.bind @output
-				robot.load_script(c.code)
+				robot.load_script(script)
 				@robots.push(robot)
 				@lives.push(robot)
 				@map[x][y] = robot
