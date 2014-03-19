@@ -54,7 +54,7 @@ module Judge
 		}
 
 		Permission = {
-			"move"		=> [true, true, true, true],
+			"move"		=> [false, true, true, true],
 			"jump"		=> [true, true, true, true],
 			"turn"		=> [true, true, true, true],
 			"die"		=> [true, true, true, true],
