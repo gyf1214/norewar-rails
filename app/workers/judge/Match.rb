@@ -2,24 +2,22 @@ module Judge
 	class Match
 		attr_reader :robots
 
-		def initialize(match)
+		def initialize(output, codes)
 			@map = Array.new(Global::MapSize) do
 				Array.new(Global::MapSize, nil)
 			end
 			@robots = RobotQueue.new
 			@lives = []
-			@output = Output.new match
+			@output = output
 			@output.start
-			match.code_ids.each_with_index do |c, index|
-				code = Code.find c
-				script = if code.nil? then "" else code.code end
+			codes.each_with_index do |c, index|
 				x = rand(Global::MapSize)
 				y = rand(Global::MapSize)
 				face = rand(4)
 				@output.push(x, y, index + 1, face)
 				robot = Robot.new(x, y, face, index + 1, true)
 				robot.bind @output
-				robot.load_script(script)
+				robot.load_script(c)
 				@robots.push(robot)
 				@lives.push(robot)
 				@map[x][y] = robot
